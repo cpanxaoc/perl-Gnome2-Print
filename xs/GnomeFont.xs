@@ -72,6 +72,7 @@ GnomeFontFace_noinc  *
 gnome_font_get_face (font)
 	GnomeFont 	* font
 
+## These are defined inside GnomeCanvas
 ##ArtPoint       *gnome_font_get_glyph_stdadvance (GnomeFont *font, gint glyph, ArtPoint *advance);
 ##ArtDRect       *gnome_font_get_glyph_stdbbox    (GnomeFont *font, gint glyph, ArtDRect *bbox);
 ##const ArtBpath *gnome_font_get_glyph_stdoutline (GnomeFont *font, gint glyph);
@@ -95,10 +96,11 @@ gnome_font_lookup_default (font, unicode)
 	gint 		unicode
 
 ##guchar *gnome_font_get_full_name (GnomeFont *font);
-##gdouble gnome_font_get_ascender (GnomeFont *font);
-##gdouble gnome_font_get_descender (GnomeFont *font);
-##gdouble gnome_font_get_underline_position  (GnomeFont *font);
-##gdouble gnome_font_get_underline_thickness (GnomeFont *font);
+
+gdouble gnome_font_get_ascender (GnomeFont *font)
+gdouble gnome_font_get_descender (GnomeFont *font)
+gdouble gnome_font_get_underline_position  (GnomeFont *font)
+gdouble gnome_font_get_underline_thickness (GnomeFont *font)
 
  ## Find the closest face matching the family name, weight, and italic
  ## This is not very intelligent, so use with caution (Lauris)
@@ -142,6 +144,7 @@ gnome_font_find_closest_from_weight_slant (family, weight, italic, size)
 	gboolean italic
 	gdouble size
 
+### These lists are lists of strings.	
 ##GList  *gnome_font_list (void);
 void
 gnome_font_list (class)
@@ -194,7 +197,27 @@ gnome_font_style_list (class, family)
 
 ##void    gnome_font_style_list_free (GList *styles);
 
+### From gnome-font.h:
+## We keep these at moment, but in future better go with Pango/glyphlists
+##
+## Normal utf8 functions
+## These are still crap, as you cannot expect ANYTHING about layouting rules
+##double gnome_font_get_width_utf8       (GnomeFont *font, const char *s);
+##double gnome_font_get_width_utf8_sized (GnomeFont *font, const char *s, int n);
+double
+gnome_font_get_width_utf8 (font, s)
+	GnomeFont * font
+	const char * s
 
+double
+gnome_font_get_width_utf8_sized (font, s, n)
+	GnomeFont * font
+	const char * s
+	int n
+
+### From gnome-font.h
+## These are somewhat tricky, as you cannot do arbitrarily transformed
+## fonts with Pango. So be cautious and try to figure out the best
+## solution.
 ##PangoFont            *gnome_font_get_closest_pango_font (const GnomeFont *font, PangoFontMap *map, gdouble dpi);
 ##PangoFontDescription *gnome_font_get_pango_description (const GnomeFont *font, gdouble dpi);
-

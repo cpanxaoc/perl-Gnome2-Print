@@ -1,3 +1,16 @@
+2003/08/29 15:26 ebassi
+
+	* xs/GnomeFont.xs: implemented more font size methods: 
+	  	gnome_font_get_glyph_width,
+	  	gnome_font_get_ascender,
+	  	gnome_font_get_descender,
+	  	gnome_font_get_underline_position,
+	  	gnome_font_get_underline_thickness,
+		gnome_font_get_width_utf8,
+		gnome_font_get_width_utf8_sized
+	* examples/basic-font.pl: changed the searched font name to
+	  "Monospace Regular".
+	
 2003/08/23 10:25 ebassi
 	
 	* pm/Config.pm, pm/Font.pm: corrected some typos in the pod
