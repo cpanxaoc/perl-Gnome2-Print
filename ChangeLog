@@ -1,3 +1,20 @@
+2003/12/17 15:49 (+0100) ebassi
+	
+	* Print.pm: version 0.60
+	
+	* examples/buffer-print.pl: added this example program that prints a
+	  buffer of lines, wrapping them.
+	
+	* examples/basic-font.pl: changed font name to "Sans Regular".
+
+	* t/05.GnomeFont.t, t/06.GnomeFontDialog.t: since libgnomeprint now
+	  checks for a fontface (see this bugzilla entry:
+	  http://bugzilla.gnome.org/show_bug.cgi?id=125836), searching for
+	  font "Sans" broke these tests; changed to "Sans Regular" which
+	  should be the standard fallback.
+	  
+	* gnomeprintperl.h: revert last change, since it breaks (wrt pango)
+
 2003/12/02 18:22 (+0100) ebassi
 
 	* gnomeprintperl.h: include gperl.h instead of gnome2perl.h.
