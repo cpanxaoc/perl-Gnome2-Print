@@ -18,16 +18,11 @@ our %build_reqs = (
 	'GnomePrint'              => '2.2.0.0',
 );
 
-# minimum required version of dependancies we need to run
-our %runtime_reqs = (
-	'GnomePrint'	=> undef,
-);
-
 # Writing a fake Makefile ensures that CPAN will pick up the correct
 # dependencies and install them.
 unless (eval "use ExtUtils::Depends;"
            . "use ExtUtils::PkgConfig;"
-		   . "use Gtk2::CodeGen;"
+	   . "use Gtk2::CodeGen;"
            # just seeing if Glib is available isn't enough, make sure
            # it's recent enough, too 
            . "use Glib '$build_reqs{'perl-Glib'}';"
@@ -51,8 +46,6 @@ mkdir 'build', 0777;
 
 our %pkgcfg = ExtUtils::PkgConfig->find ('libgnomeprintui-2.2 >= '
 				     .$build_reqs{GnomePrint});
-
-$runtime_reqs{GnomePrint} = $pkgcfg{modversion};
 
 #
 # autogeneration
@@ -136,7 +129,6 @@ sub postamble
 	return Glib::MakeHelper->postamble_clean ()
 	     . Glib::MakeHelper->postamble_docs (@main::xs_files)
 	     . Glib::MakeHelper->postamble_rpms (
-		'GNOMEPRINT_RUN' => $runtime_reqs{'GnomePrint'},
 		'GNOMEPRINT' => $build_reqs{'GnomePrint'},
 		'PERL_EXTUTILS_DEPENDS' => 
 			$build_reqs{'perl-ExtUtils-Depends'},
