@@ -74,7 +74,7 @@ my %pod_files = (
     'pm/Font.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Font.$(MAN3EXT)',
 );
 
-$gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gtk2', 'Glib');
+$gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gnome2::VFS', 'Gtk2', 'Glib');
 $gnomeprint2->set_inc ($pkgcfg{cflags} . ' -I. -I./build ');
 $gnomeprint2->set_libs ($pkgcfg{libs});
 $gnomeprint2->add_xs (<xs/*.xs>);
