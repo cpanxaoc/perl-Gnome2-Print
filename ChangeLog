@@ -1,3 +1,9 @@
+2003/12/29 16:32 (-0500) rwmcfa1
+
+	* perl-Gnome2-Print.spec.in: use the new DATE replacement in 
+	conjunction with VERSION to create the changlog on the fly, which is 
+	better.
+
 2003/12/23 00:02 (-0500) muppetman
 
 	* xs/GnomeFont.xs, xs/GnomeFontDialog.xs, xs/GnomeFontFace.xs,
