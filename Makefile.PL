@@ -3,6 +3,8 @@
 #
 
 use 5.008;
+use strict;
+use warnings;
 use Cwd;
 use File::Spec;
 use ExtUtils::MakeMaker;
@@ -11,8 +13,8 @@ use ExtUtils::MakeMaker;
 our %build_reqs = (
 	'perl-ExtUtils-Depends'   => '0.1',
 	'perl-ExtUtils-PkgConfig' => '0.1',
-	'perl-Glib'               => '1.00',
-	'perl-Gtk2'               => '1.00',
+	'perl-Glib'               => '1.012',
+	'perl-Gtk2'               => '1.012',
 	'GnomePrint'              => '2.2.0.0',
 );
 
@@ -25,32 +27,32 @@ our %runtime_reqs = (
 # dependencies and install them.
 unless (eval "use ExtUtils::Depends;"
            . "use ExtUtils::PkgConfig;"
-	   . "use Gtk2::CodeGen;"
+		   . "use Gtk2::CodeGen;"
            # just seeing if Glib is available isn't enough, make sure
            # it's recent enough, too 
            . "use Glib '$build_reqs{'perl-Glib'}';"
            . "use Gtk2 '$build_reqs{'perl-Gtk2'}';"
-	   . "use Glib::MakeHelper;"
+		   . "use Glib::MakeHelper;"
            . "1") {
    warn "$@\n";
    WriteMakefile(
          PREREQ_FATAL => 1,
          PREREQ_PM    => {
-            Glib::                => $build_reqs{'perl-Glib'},
-            Gtk2::                => $build_reqs{'perl-Gtk2'},
-            ExtUtils::Depends::   => $build_reqs{'perl-ExtUtils-Depends'},
-            ExtUtils::PkgConfig:: => $build_reqs{'perl-ExtUtils-PkgConfig'},
+            'Glib'                => $build_reqs{'perl-Glib'},
+            'Gtk2'                => $build_reqs{'perl-Gtk2'},
+            'ExtUtils::Depends'   => $build_reqs{'perl-ExtUtils-Depends'},
+            'ExtUtils::PkgConfig' => $build_reqs{'perl-ExtUtils-PkgConfig'},
          },
    );
    exit 1; # not reached
 }
 
-%pkgcfg = ExtUtils::PkgConfig->find ('libgnomeprintui-2.2 >= '
+mkdir 'build', 0777;
+
+our %pkgcfg = ExtUtils::PkgConfig->find ('libgnomeprintui-2.2 >= '
 				     .$build_reqs{GnomePrint});
 
 $runtime_reqs{GnomePrint} = $pkgcfg{modversion};
-
-mkdir 'build', 0777;
 
 #
 # autogeneration
@@ -64,19 +66,35 @@ Gtk2::CodeGen->write_boot (ignore => '^Gnome2::Print$');
 # will chain from this one.
 
 our @xs_files = <xs/*.xs>;
-my %pm_files = (
+our %pm_files = (
     'Print.pm'		=> '$(INST_LIBDIR)/Print.pm',
     'pm/Config.pm'	=> '$(INST_LIBDIR)/Print/Config::Constants.pm',
     'pm/Font.pm'	=> '$(INST_LIBDIR)/Print/Font::Constants.pm',
 );
-my %pod_files = (
+our %pod_files = (
     'Print.pm'		=> '$(INST_MAN3DIR)/Gnome2::Print.$(MAN3EXT)',
     'pm/Config.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Config::Constants.$(MAN3EXT)',
     'pm/Font.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Font::Constants.$(MAN3EXT)',
     Glib::MakeHelper->do_pod_files (@xs_files),
 );
 
-$gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gnome2::VFS', 'Gtk2', 'Glib');
+open VERSION, ">build/gnomeprintperl-version.h";
+
+my $stem = "GNOMEPRINT";
+my @modversion = split /\./, $pkgcfg{ modversion };
+print VERSION "#define $stem\_MAJOR_VERSION   ($modversion[0])\n";
+print VERSION "#define $stem\_MINOR_VERSION   ($modversion[1])\n";
+print VERSION "#define $stem\_MICRO_VERSION   (" . ($modversion[2] || 0) . ")\n";
+print VERSION
+    "#define $stem\_CHECK_VERSION(major,minor,micro) \\\n"
+  . "    ($stem\_MAJOR_VERSION > (major) || \\\n"
+  . "     ($stem\_MAJOR_VERSION == (major) && $stem\_MINOR_VERSION > (minor)) || \\\n"
+  . "     ($stem\_MAJOR_VERSION == (major) && $stem\_MINOR_VERSION == (minor) && \\\n"
+  . "      $stem\_MICRO_VERSION >= (micro)))\n";
+
+close VERSION;
+
+my $gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gnome2::VFS', 'Gtk2', 'Glib');
 $gnomeprint2->set_inc ($pkgcfg{cflags} . ' -I. -I./build ');
 $gnomeprint2->set_libs ($pkgcfg{libs});
 $gnomeprint2->add_xs (@xs_files);
@@ -84,8 +102,9 @@ $gnomeprint2->add_pm (%pm_files);
 my $cwd = cwd();
 $gnomeprint2->add_typemaps (map {File::Spec->catfile($cwd,$_)} 'build/gnomeprintperl.typemap');
 $gnomeprint2->add_headers ('gnomeprintperl.h');
-
-$gnomeprint2->install (qw(gnomeprintperl.h build/gnomeprintperl-autogen.h));
+$gnomeprint2->install (qw(gnomeprintperl.h
+		build/gnomeprintperl-autogen.h
+		build/gnomeprintperl-version.h));
 $gnomeprint2->save_config ('build/IFiles.pm');
 
 WriteMakefile(
@@ -96,7 +115,6 @@ WriteMakefile(
     XSPROTOARG    => '-noprototypes',
     MAN3PODS	  => \%pod_files,
     $gnomeprint2->get_makefile_vars,
-    DEFINE        => '-DLIBGNOMEPRINT_VER=\"' . $pkgcfg{modversion} .'\"',
 );
 
 #

@@ -21,6 +21,10 @@ gnome_print_dialog_get_config (gpd)
 	GnomePrintDialog *gpd
 
 ## void gnome_print_dialog_get_copies (GnomePrintDialog *gpd, gint *copies, gint *collate);
+=for apidoc
+This method returns a list containing the number of the copies and a boolean
+value stating if the copies should be collated.
+=cut
 void
 gnome_print_dialog_get_copies (gpd)
 	GnomePrintDialog *gpd

@@ -38,6 +38,9 @@ gint gnome_print_job_get_pages (job)
 
 gint gnome_print_job_print_to_file (GnomePrintJob *job, gchar *output);
 
+=for apidoc
+This method returns a list containing the width and height of a the page.
+=cut
 void
 gnome_print_job_get_page_size (job)
 	GnomePrintJob	* job

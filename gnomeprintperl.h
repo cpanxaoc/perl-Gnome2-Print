@@ -19,5 +19,6 @@
 #include <libgnomeprintui/gnome-print-unit-selector.h>
 
 #include "gnomeprintperl-autogen.h"
+#include "gnomeprintperl-version.h"
 
 #endif /* _GNOME_PRINT_PERL_H_ */

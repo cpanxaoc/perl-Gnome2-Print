@@ -73,6 +73,10 @@ gnome_font_get_face (font)
 	GnomeFont 	* font
 
 ##ArtPoint *gnome_font_get_glyph_stdadvance (GnomeFont *font, gint glyph, ArtPoint *advance);
+=for apidoc
+This method returns the x and y coordinates of a given glyph's standard
+advance.
+=cut
 void
 gnome_font_get_glyph_stadvance (font, glyph)
 	GnomeFont	* font
@@ -86,6 +90,10 @@ gnome_font_get_glyph_stadvance (font, glyph)
 	PUSHs (sv_2mortal (newSVnv (advance.y)));
 
 ##ArtDRect *gnome_font_get_glyph_stdbbox (GnomeFont *font, gint glyph, ArtDRect *bbox);
+=for apidoc
+This method returns the coordinates (x0, y0, x1, y1) of a given glyph's
+standard bbox.
+=cut
 void
 gnome_font_get_glyph_stdbbox (font, glyph)
 	GnomeFont	* font
@@ -106,6 +114,10 @@ gnome_font_get_glyph_stdbbox (font, glyph)
 ##const ArtBpath *gnome_font_get_glyph_stdoutline (GnomeFont *font, gint glyph);
 
 ##ArtPoint *gnome_font_get_glyph_stdkerning (GnomeFont *font, gint glyph0, gint glyph1, ArtPoint *kerning);
+=for apidoc
+This method returns the x and y coordinates of the standard kerning of the
+two given glyphs.
+=cut
 void
 gnome_font_get_glyph_stdkerning (font, glyph0, glyph1)
 	GnomeFont	* font
@@ -188,8 +200,12 @@ gnome_font_find_closest_from_weight_slant (family, weight, italic, size)
 	gboolean italic
 	gdouble size
 
-### These lists are lists of strings.	
+### These lists are lists of strings.
 ##GList  *gnome_font_list (void);
+=for apidoc
+This method returns a list of strings, each one containing a font name present
+on this system.
+=cut
 void
 gnome_font_list (class)
 	SV * class
@@ -207,6 +223,10 @@ gnome_font_list (class)
 ##void    gnome_font_list_free (GList *fontlist);
 
 ##GList  *gnome_font_family_list (void);
+=for apidoc
+This method returns a list of strings, each one containing a font family
+present on this system.
+=cut
 void
 gnome_font_family_list (class)
 	SV * class
@@ -224,6 +244,10 @@ gnome_font_family_list (class)
 ##void    gnome_font_family_list_free (GList *fontlist);
 
 ##GList  *gnome_font_style_list (const guchar *family);
+=for apidoc
+This method returns a list of strings, each one containing a style for the
+given font family.
+=cut
 void
 gnome_font_style_list (class, family)
 	SV * class;
