@@ -6,14 +6,15 @@ MODULE = Gnome2::Print::Dialog PACKAGE = Gnome2::Print::Dialog	PREFIX = gnome_pr
 ### Flags are:
 ###	GNOME_PRINT_DIALOG_RANGE: A range widget container will be created.
 ###	GNOME_PRINT_DIALOG_COPIES: A copies widget will be created.
+
 GtkWidget *
 gnome_print_dialog_new (class, gpj, title, flags=0)
-	SV		* class
 	GnomePrintJob	* gpj
 	const guchar	* title
 	gint		flags
     C_ARGS:
     	gpj, title, flags
+
 
 ## GnomePrintConfig *gnome_print_dialog_get_config (GnomePrintDialog *gpd);
 GnomePrintConfig *
