@@ -1,5 +1,5 @@
 
-Gnome2::Print version 0.61
+Gnome2::Print version 0.91
 ===========================
 
 The Gnome2::Print module allows a perl developer to use the Gnome Printing
@@ -59,7 +59,7 @@ This module requires these other modules and libraries:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2003 by the gtk2-perl team (see the file AUTHORS for a
+Copyright (C) 2003,2004 by the gtk2-perl team (see the file AUTHORS for a
 complete list)
 
 This library is free software; you can redistribute it and/or
