@@ -54,38 +54,42 @@ Dimensional attributes.
 ## GnomePrintPaper it's not a registered boxed type.
 ##const GnomePrintPaper *gnome_print_paper_get_default (void);
 GnomePrintPaper *
-gnome_print_paper_get_default (void)
+gnome_print_paper_get_default (class)
     CODE:
+    	PERL_UNUSED_VAR (ax);
 	RETVAL = (GnomePrintPaper *) gnome_print_paper_get_default ();
     OUTPUT:
 	RETVAL
 
-##const GnomePrintPaper *gnome_print_paper_by_name (const guchar *name);
+##const GnomePrintPaper *gnome_print_paper_get_by_name (const guchar *name);
 GnomePrintPaper *
-gnome_print_paper_by_name (name)
+gnome_print_paper_get_by_name (class, name)
 	const guchar * name
     CODE:
-	RETVAL = (GnomePrintPaper *) gnome_print_paper_by_name (name);
+    	PERL_UNUSED_VAR (ax);
+	RETVAL = (GnomePrintPaper *) gnome_print_paper_get_by_name (name);
     OUTPUT:
 	RETVAL
 
 ##const GnomePrintPaper *gnome_print_paper_get_by_size (gdouble width, gdouble height);
 GnomePrintPaper *
-gnome_print_paper_get_by_size (width, height)
+gnome_print_paper_get_by_size (class, width, height)
 	gdouble width
 	gdouble height
     CODE:
+    	PERL_UNUSED_VAR (ax);
 	RETVAL = (GnomePrintPaper *) gnome_print_paper_get_by_size (width, height);
     OUTPUT:
 	RETVAL
 
 ##const GnomePrintPaper *gnome_print_paper_get_closest_by_size (gdouble width, gdouble height, gboolean mustfit);
 GnomePrintPaper *
-gnome_print_paper_get_closest_by_size (width, height, mustfit)
+gnome_print_paper_get_closest_by_size (class, width, height, mustfit)
 	gdouble width
 	gdouble height
 	gboolean mustfit
     CODE:
+    	PERL_UNUSED_VAR (ax);
 	RETVAL = (GnomePrintPaper *) gnome_print_paper_get_closest_by_size (width, height, mustfit);
     OUTPUT:
 	RETVAL
@@ -96,10 +100,11 @@ gnome_print_paper_get_closest_by_size (width, height, mustfit)
 This method returns an array containing all the registered paper types.
 =cut
 void
-gnome_print_paper_get_list (void)
+gnome_print_paper_get_list (class)
     PREINIT:
 	GList *l, *tmp;
     PPCODE:
+	PERL_UNUSED_VAR (ax);
 	l = gnome_print_paper_get_list ();
 	for (tmp = l; tmp != NULL; tmp = g_list_next (tmp))
 		XPUSHs (sv_2mortal (newSVGnomePrintPaper (tmp->data)));
