@@ -1,3 +1,12 @@
+2003/12/02 12:46 (-0500) muppetman
+
+	* t/06.GnomeFontDialog.t: this one slipped through the cracks when
+	Gnome2::Print::Font changed to Gnome2::Print::Font::Constants.
+
+	* t/00.GnomePrint.t: my version of Test::More's ok() was mortally
+	confused by Gnome2::Print->get_version_info returning a list; check
+	that it returns three elements instead.
+
 2003/11/29 18:45 (+0100) ebassi
 
 	* xs/GnomePrintJob.xs, xs/GnomeFont.xs, xs/GnomeFontFace.xs,

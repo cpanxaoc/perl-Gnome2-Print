@@ -15,7 +15,7 @@ ok( $font->get_name );
 
 ok( $weight = Gnome2::Print::Font->bold );
 
-use_ok('Gnome2::Print::Font');
+use_ok('Gnome2::Print::Font::Constants');
 ok( $weight = Gnome2::Print::Font::GNOME_FONT_BOLD );
 
 ok( Gnome2::Print::Font->list );
