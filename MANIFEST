@@ -3,11 +3,12 @@ MANIFEST
 MANIFEST.SKIP
 Makefile.PL
 Print.pm
+examples/basic-font.pl
+examples/test-print.pl
 genmaps.pl
 gnomeprintperl.h
 maps
-examples/basic-font.pl
-examples/test-print.pl
+pm/Config.pm
 pm/Font.pm
 t/00.GnomePrint.t
 t/01.GnomePrintConfig.t
@@ -18,8 +19,10 @@ t/05.GnomeFont.t
 t/06.GnomeFontDialog.t
 xs/GnomeFont.xs
 xs/GnomeFontDialog.xs
+xs/GnomeFontFace.xs
 xs/GnomeFontPreview.xs
 xs/GnomeFontSelection.xs
+xs/GnomeGlyphList.xs
 xs/GnomePrint2.xs
 xs/GnomePrintConfig.xs
 xs/GnomePrintContext.xs
