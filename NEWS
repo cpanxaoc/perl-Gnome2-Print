@@ -1,3 +1,7 @@
+Overview of changes since 0.93
+
+* Fixed Gnome2::Print::Paper.  [Emmanuele and Torsten]
+
 Overview of changes since 0.92
 ==============================
 
