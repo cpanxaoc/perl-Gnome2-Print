@@ -93,7 +93,7 @@ This stuff is hardcoded directly from the headers of libgnomeprint 2.2.3
 
 =head1 SEE ALSO
 
-perl(1), Gtk2(1)
+perl(1), Gtk2(3pm), Gnome2(3pm), Gnome2::Print(3pm).
 
 =head1 AUTHOR
 
