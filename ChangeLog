@@ -1,3 +1,11 @@
+2003/09/11 21:02 rwmcfa1
+	
+	* xs/GnomePrintUnit.xs, xs/GnomePrintConfig.xs: PREFIX added/moved.
+
+	* xs/GnomeFontFace.xs: PREFIX added, gnome_font_face_get_glyph_kerning
+	commented out, the func is declaired in the header files, but not in 
+	the .so libs on redhat 9 with libgnomeprint(ui)-2.2.
+
 2003/09/10 14:24 ebassi
 	
 	* xs/GnomeFontFace.xs: implemented:

@@ -1,6 +1,6 @@
 #include "gnomeprintperl.h"
 
-MODULE = Gnome2::Print::Unit PACKAGE = Gnome2::Print::Unit
+MODULE = Gnome2::Print::Unit PACKAGE = Gnome2::Print::Unit PREFIX = gnome_print_unit_
 
 ## read-only access to GnomePrintUnit members.
 SV *
@@ -25,9 +25,6 @@ members (GnomePrintUnit * unit)
 	}
     OUTPUT:
     	RETVAL
-
-
-MODULE = Gnome2::Print::Unit PACKAGE = Gnome2::Print::Unit PREFIX = gnome_print_unit_
 
 
 ## These are read-only values, so we just pass copies.

@@ -1,8 +1,6 @@
 #include "gnomeprintperl.h"
 
-
-MODULE = Gnome2::Print::Config	PACKAGE = Gnome2::Print::Config
-
+MODULE = Gnome2::Print::Config	PACKAGE = Gnome2::Print::Config PREFIX = gnome_print_config_
 
 ### some convenience keys to be used with set/get...
 ### the key's string returned is constant, so we don't need to think about it.
@@ -71,10 +69,6 @@ constants (class)
 	}
     OUTPUT:
 	RETVAL
-
-
-MODULE = Gnome2::Print::Config	PACKAGE = Gnome2::Print::Config	PREFIX = gnome_print_config_
-
 
 GnomePrintConfig_noinc *
 gnome_print_config_default (SV * class);

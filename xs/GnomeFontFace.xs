@@ -1,7 +1,6 @@
 #include "gnomeprintperl.h"
 
-MODULE = Gnome2::Print::FontFace PACKAGE = Gnome2::Print::FontFace
-
+MODULE = Gnome2::Print::FontFace PACKAGE = Gnome2::Print::FontFace PREFIX = gnome_font_face_
 
 GnomeFontFace_noinc *
 gnome_font_face_find (class, name)
@@ -106,11 +105,13 @@ gdouble
 gnome_font_face_get_glyph_width (face, glyph)
 	GnomeFontFace * face
 	gint glyph
-	
-gdouble
-gnome_font_face_get_glyph_kerning (face, glyph1, glyph2)
-	GnomeFontFace * face
-	gint glyph1
-	gint glyph2
+
+# doesn't seem to be defined in the libs i have, even thought it's in 
+# the header files.
+#gdouble
+#gnome_font_face_get_glyph_kerning (face, glyph1, glyph2)
+#	GnomeFontFace * face
+#	gint glyph1
+#	gint glyph2
 
 ##const guchar   *gnome_font_face_get_glyph_ps_name (GnomeFontFace *face, gint glyph);
