@@ -68,8 +68,8 @@ Gnome2::Print - Perl wrappers for the Gnome Print utilities.
 
 =head1 ABSTRACT
 
-  Perl bindings to the 2.2 series of the Gnome Print libraries,
-  for use with gtk2-perl.
+Perl bindings to the 2.2 series of the Gnome Print libraries, for use
+with gtk2-perl.
 
 =head1 DESCRIPTION
 
@@ -86,7 +86,7 @@ Find out more about Gnome+ at http://www.gnome.org.
 
 =head1 SEE ALSO
 
-perl(1), Glib(3pm), Gtk2(3pm), Gnome2(3pm).
+L<perl>(1), L<Glib>(3pm), L<Gtk2>(3pm), L<Gnome2>(3pm).
 
 =head1 AUTHOR
 
