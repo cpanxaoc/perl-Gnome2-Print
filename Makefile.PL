@@ -11,7 +11,7 @@ use Glib::PkgConfig;
 use Gtk2::CodeGen;
 
 
-%pkgcfg = Glib::PkgConfig->find ('libgnomeprint-2.2 libgnomeprintui-2.2');
+%pkgcfg = Glib::PkgConfig->find ('libgnomeprintui-2.2', 'libgnomeprintui-2.0');
 
 mkdir 'build', 0777;
 
@@ -28,16 +28,21 @@ Gtk2::CodeGen->write_boot (ignore => '^Gnome2::Print$');
 
 my %pm_files = (
 	'Print.pm'		=> '$(INST_LIBDIR)/Print.pm',
+	'pm/Config.pm'	=> '$(INST_LIBDIR)/Print/Config.pm',
 	'pm/Font.pm'	=> '$(INST_LIBDIR)/Print/Font.pm',
 );
 
 my %pod_files = (
 	'Print.pm'		=> '$(INST_MAN3DIR)/Print.$(MAN3EXT)',
+	'pm/Config.pm'	=> '$(INST_MAN3DIR)/Print::Config.$(MAN3EXT)',
 	'pm/Font.pm'	=> '$(INST_MAN3DIR)/Print::Font.$(MAN3EXT)',
 );
 
+# yuck!
+my $modflag = (($pkgcfg{modversion} =~ /2\.2/) ? 'HAVE_GNOMEPRINT2_2' : 'HAVE_GNONEPRINT2_0');
+
 $gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gtk2', 'Glib');
-$gnomeprint2->set_inc ($pkgcfg{cflags} . ' -I. -I./build ');
+$gnomeprint2->set_inc ($pkgcfg{cflags} . ' -I. -I./build ' . "-D$modflag");
 $gnomeprint2->set_libs ($pkgcfg{libs});
 $gnomeprint2->add_xs (<xs/*.xs>);
 $gnomeprint2->add_pm (%pm_files);
@@ -48,7 +53,6 @@ $gnomeprint2->add_headers ('gnomeprintperl.h');
 $gnomeprint2->install (qw(gnomeprintperl.h build/gnomeprintperl-autogen.h));
 $gnomeprint2->save_config ('build/IFiles.pm');
 
-
 WriteMakefile(
     NAME          => 'Gnome2::Print',
     VERSION_FROM  => 'Print.pm', # finds $VERSION
@@ -57,6 +61,7 @@ WriteMakefile(
     XSPROTOARG    => '-noprototypes',
 	MAN3PODS	  => \%pod_files,
     $gnomeprint2->get_makefile_vars,
+	DEFINE        => '-DLIBGNOMEPRINT_VER=\"' . $pkgcfg{modversion} .'\"',
 );
 
 #

@@ -1,4 +1,14 @@
-2003/08/16 hh:mm ebassi
+2003/08/18 14:44 ebassi
+	
+	* xs/GnomePrint2.xs: added "get_version" class method; this method
+	  returns a string containing the version of libgnomeprint, as taken
+	  from the package config.
+	* pm/Config.pm: constant keys for GnomePrintConfig.
+	* xs/GnomePrintConfig.xs: get/set methods and key macros.
+	* Makefile.PL: dropped libgnomeprint-2.2 from PkgConfig->find; added a
+	  check for libgnomeprint version, in order to support older releases.
+	
+2003/08/16 16:58 ebassi
 
 	* *: initial ChangeLog entry.  libgnomeprintui is completely wrapped,
 	     libgnomeprint binding lacks of GnomePrintUnit, GnomePrintPaper,
