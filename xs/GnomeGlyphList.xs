@@ -5,7 +5,7 @@ MODULE = Gnome2::Print::GluphList PACKAGE = Gnome2::Print::GlyphList PREFIX = gn
 
 ##GnomeGlyphList * gnome_glyphlist_new (void);
 GnomeGlyphList_own *
-gnome_glyphlist_new (SV * class)
+gnome_glyphlist_new (class)
     C_ARGS:
 	/* void */		
 

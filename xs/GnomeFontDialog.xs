@@ -4,7 +4,7 @@ MODULE = Gnome2::Print::FontDialog PACKAGE = Gnome2::Print::FontDialog PREFIX = 
 
 
 GtkWidget *
-gnome_font_dialog_new (SV * class, const gchar *title)
+gnome_font_dialog_new (class, const gchar *title)
     C_ARGS:
     	title
 

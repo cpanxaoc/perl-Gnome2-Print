@@ -32,7 +32,6 @@ members (GnomePrintUnit * unit)
 ##const GnomePrintUnit *gnome_print_unit_get_identity (guint base);
 GnomePrintUnit_copy *
 gnome_print_unit_get_identity (class, base)
-	SV * class
 	guint base
     C_ARGS:
     	base
@@ -40,14 +39,12 @@ gnome_print_unit_get_identity (class, base)
 ##const GnomePrintUnit *gnome_print_unit_get_default (void);
 GnomePrintUnit_copy *
 gnome_print_unit_get_default (class)
-	SV * class
     C_ARGS:
     	/* void */
 
 ##const GnomePrintUnit *gnome_print_unit_get_by_name (const guchar *name);
 GnomePrintUnit_copy *
 gnome_print_unit_get_by_name (class, name)
-	SV * class
 	const guchar * name
     C_ARGS:
     	name
@@ -55,7 +52,6 @@ gnome_print_unit_get_by_name (class, name)
 ##const GnomePrintUnit *gnome_print_unit_get_by_abbreviation (const guchar *abbreviation);
 GnomePrintUnit_copy *
 gnome_print_unit_get_by_abbreviation (class, abbreviation)
-	SV * class
 	const guchar * abbreviation
     C_ARGS:
     	abbreviation

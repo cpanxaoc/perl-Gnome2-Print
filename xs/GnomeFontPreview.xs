@@ -4,7 +4,7 @@ MODULE = Gnome2::Print::FontPreview PACKAGE = Gnome2::Print::FontPreview PREFIX 
 
 
 GtkWidget *
-gnome_font_preview_new (SV * class)
+gnome_font_preview_new (class)
     C_ARGS:
     	/* void */
 

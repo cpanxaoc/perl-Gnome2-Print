@@ -4,7 +4,7 @@ MODULE = Gnome2::Print::FontSelection PACKAGE = Gnome2::Print::FontSelection PRE
 
 
 GtkWidget *
-gnome_font_selection_new (SV * class)
+gnome_font_selection_new (class)
     C_ARGS:
 	/* void */
 

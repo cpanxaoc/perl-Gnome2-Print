@@ -5,7 +5,6 @@ MODULE = Gnome2::Print::PaperSelector PACKAGE = Gnome2::Print::PaperSelector PRE
 
 GtkWidget *
 gnome_paper_selector_news (class, config, flags=0)
-	SV * class
 	GnomePrintConfig *config
 	gint flags
     ALIAS:

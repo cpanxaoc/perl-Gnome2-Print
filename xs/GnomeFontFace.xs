@@ -5,21 +5,18 @@ MODULE = Gnome2::Print::FontFace PACKAGE = Gnome2::Print::FontFace PREFIX = gnom
 
 GnomeFontFace_noinc *
 gnome_font_face_find (class, name)
-	SV * class
 	const guchar * name
     C_ARGS:
      	name
 
 GnomeFontFace_noinc *
 gnome_font_face_find_closest (class, name)
-	SV * class
 	const guchar * name
     C_ARGS:
     	name
 
 GnomeFontFace_noinc *
 gnome_font_face_find_closest_from_weight_slant (class, family, weight, italic)
-	SV * class
 	const guchar *family
 	gint weight
 	gboolean italic
@@ -28,21 +25,18 @@ gnome_font_face_find_closest_from_weight_slant (class, family, weight, italic)
 
 GnomeFontFace_noinc *
 gnome_font_face_find_closest_from_pango_font (class, pfont)
-	SV * class
 	PangoFont * pfont
     C_ARGS:
     	pfont
 
 GnomeFontFace_noinc *
 gnome_font_face_find_closest_from_pango_description (class, desc)
-	SV * class
 	PangoFontDescription * desc
     C_ARGS:
     	desc
 	
 GnomeFontFace_noinc *
 gnome_font_face_find_from_family_and_style (class, family, style)
-	SV * class
 	const guchar * family
 	const guchar * style
     C_ARGS:

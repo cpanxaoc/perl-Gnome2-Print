@@ -9,7 +9,6 @@ BOOT:
 
 GnomePrintContext_noinc *
 gnome_print_context_new (class, config)
-	SV			* class
 	GnomePrintConfig	* config
     C_ARGS:
 	config

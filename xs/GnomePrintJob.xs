@@ -6,7 +6,6 @@ MODULE = Gnome2::Print::Job	PACKAGE = Gnome2::Print::Job	PREFIX = gnome_print_jo
 
 GnomePrintJob_noinc *
 gnome_print_job_new (class, config=NULL)
-	SV			* class
 	GnomePrintConfig_ornull	* config
     C_ARGS:
 	config

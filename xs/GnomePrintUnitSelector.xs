@@ -5,7 +5,6 @@ MODULE = Gnome2::Print::UnitSelector PACKAGE = Gnome2::Print::UnitSelector PREFI
 
 GtkWidget *
 gnome_print_unit_selector_new (class, bases)
-	SV * class
 	guint bases
     C_ARGS:
     	bases
