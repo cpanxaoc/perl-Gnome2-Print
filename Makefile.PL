@@ -47,17 +47,6 @@ mkdir 'build', 0777;
 our %pkgcfg = ExtUtils::PkgConfig->find ('libgnomeprintui-2.2 >= '
 				     .$build_reqs{GnomePrint});
 
-#
-# autogeneration
-#
-Gtk2::CodeGen->parse_maps ('gnomeprintperl');
-Gtk2::CodeGen->write_boot (ignore => '^Gnome2::Print$');
-
-# now we're ready to start creating the makefile.
-# we need to use ExtUtils::Depends to get relevant information out of
-# the Glib extension, and to save config information for other modules which
-# will chain from this one.
-
 our @xs_files = <xs/*.xs>;
 our %pm_files = (
     'Print.pm'		=> '$(INST_LIBDIR)/Print.pm',
@@ -71,21 +60,14 @@ our %pod_files = (
     Glib::MakeHelper->do_pod_files (@xs_files),
 );
 
-open VERSION, ">build/gnomeprintperl-version.h";
+ExtUtils::PkgConfig->write_version_macros ("build/gnomeprintperl-version.h",
+                                           'libgnomeprintui-2.2' => 'GNOMEPRINT');
 
-my $stem = "GNOMEPRINT";
-my @modversion = split /\./, $pkgcfg{ modversion };
-print VERSION "#define $stem\_MAJOR_VERSION   ($modversion[0])\n";
-print VERSION "#define $stem\_MINOR_VERSION   ($modversion[1])\n";
-print VERSION "#define $stem\_MICRO_VERSION   (" . ($modversion[2] || 0) . ")\n";
-print VERSION
-    "#define $stem\_CHECK_VERSION(major,minor,micro) \\\n"
-  . "    ($stem\_MAJOR_VERSION > (major) || \\\n"
-  . "     ($stem\_MAJOR_VERSION == (major) && $stem\_MINOR_VERSION > (minor)) || \\\n"
-  . "     ($stem\_MAJOR_VERSION == (major) && $stem\_MINOR_VERSION == (minor) && \\\n"
-  . "      $stem\_MICRO_VERSION >= (micro)))\n";
-
-close VERSION;
+#
+# autogeneration
+#
+Gtk2::CodeGen->parse_maps ('gnomeprintperl');
+Gtk2::CodeGen->write_boot (ignore => '^Gnome2::Print$');
 
 my $gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gnome2::VFS', 'Gtk2', 'Glib');
 $gnomeprint2->set_inc ($pkgcfg{cflags} . ' -I. -I./build ');
@@ -93,8 +75,7 @@ $gnomeprint2->set_libs ($pkgcfg{libs});
 $gnomeprint2->add_xs (@xs_files);
 $gnomeprint2->add_pm (%pm_files);
 my $cwd = cwd();
-$gnomeprint2->add_typemaps (map {File::Spec->catfile($cwd,$_)} 'build/gnomeprintperl.typemap');
-$gnomeprint2->add_headers ('gnomeprintperl.h');
+$gnomeprint2->add_typemaps (File::Spec->catfile($cwd, 'build/gnomeprintperl.typemap'));
 $gnomeprint2->install (qw(gnomeprintperl.h
 		build/gnomeprintperl-autogen.h
 		build/gnomeprintperl-version.h));
@@ -110,21 +91,7 @@ WriteMakefile(
     $gnomeprint2->get_makefile_vars,
 );
 
-#
-# there's a bug in the MakeMaker output which results in .xs files in a
-# subdirectory being turned into .o files in this dir.  the bug is a missing
-# -o on the compiler command line.  this is a hackish fix for it.
-#
-package MY;
-use Cwd;
-
-sub const_cccmd {
-	my $inherited = shift->SUPER::const_cccmd (@_);
-	$inherited .= ' -o $@';
-	$inherited;
-}
-
-sub postamble
+sub MY::postamble
 {
 	return Glib::MakeHelper->postamble_clean ()
 	     . Glib::MakeHelper->postamble_docs (@main::xs_files)
@@ -138,4 +105,3 @@ sub postamble
 		'PERL_GTK' => $build_reqs{'perl-Gtk2'},
 	       );
 }
-package MAIN;
