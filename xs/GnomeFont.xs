@@ -98,8 +98,11 @@ gnome_font_lookup_default (font, unicode)
 ##guchar *gnome_font_get_full_name (GnomeFont *font);
 
 gdouble gnome_font_get_ascender (GnomeFont *font)
+
 gdouble gnome_font_get_descender (GnomeFont *font)
+
 gdouble gnome_font_get_underline_position  (GnomeFont *font)
+
 gdouble gnome_font_get_underline_thickness (GnomeFont *font)
 
  ## Find the closest face matching the family name, weight, and italic

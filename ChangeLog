@@ -1,3 +1,9 @@
+2003/09/02 09:45 rwmcfa1
+
+	* xs/GnomeFont.xs: xsubpp wants a blank line between each function,
+	at least mine/most do. a couple of the ones commited below didn't have
+	them.
+
 2003/08/29 15:26 ebassi
 
 	* xs/GnomeFont.xs: implemented more font size methods: 
