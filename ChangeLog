@@ -1,4 +1,9 @@
+2003/11/24 23:02 (-0500) rwmcfa1
+
+	* perl-Gnome2-Print.spec.in: fixed requires bug.
+
 2003/11/13 21:15 (-0500) muppetman
+
 
 	* Makefile.PL, README: require 1.00 rather than 1.00rc1 -- we disavow
 	the existence of the release candidates.
