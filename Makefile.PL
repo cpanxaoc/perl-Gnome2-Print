@@ -17,7 +17,7 @@ mkdir 'build', 0777;
 # autogeneration
 #
 Gtk2::CodeGen->parse_maps ('gnomeprintperl');
-Gtk2::CodeGen->write_boot;
+Gtk2::CodeGen->write_boot (ignore => '^Gnome2::Print$');
 
 
 # now we're ready to start creating the makefile.
@@ -33,7 +33,7 @@ $gnomeprint2->add_pm ('Print.pm' => '$(INST_LIBDIR)/Gnome2/Print.pm');
 $gnomeprint2->add_typemaps (map {cwd().'/'.$_} 'build/gnomeprintperl.typemap');
 $gnomeprint2->add_headers ('gnomeprintperl.h');
 
-$gnomeprint2->install (qw(gnomeprint2perl.h build/gnomeprint2perl-autogen.h));
+$gnomeprint2->install (qw(gnomeprintperl.h build/gnomeprintperl-autogen.h));
 $gnomeprint2->save_config ('build/IFiles.pm');
 
 WriteMakefile(
