@@ -6,13 +6,10 @@ use 5.008;
 use Cwd;
 use ExtUtils::MakeMaker;
 use ExtUtils::Depends;
-use blib '../G';
-use blib '../Gtk2';
-use blib '../Gnome2';
-use G::PkgConfig;
+use Glib::PkgConfig;
 use Gtk2::CodeGen;
 
-%pkgcfg = G::PkgConfig->find ('libgnomeprintui-2.0');
+%pkgcfg = Glib::PkgConfig->find ('libgnomeprintui-2.0');
 
 mkdir 'build', 0777;
 
@@ -25,10 +22,10 @@ Gtk2::CodeGen->write_boot;
 
 # now we're ready to start creating the makefile.
 # we need to use ExtUtils::Depends to get relevant information out of
-# the G extension, and to save config information for other modules which
+# the Glib extension, and to save config information for other modules which
 # will chain from this one.
 
-$gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gtk2', 'G');
+$gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gtk2', 'Glib');
 $gnomeprint2->set_inc ($pkgcfg{cflags} . ' -I. -I./build ');
 $gnomeprint2->set_libs ($pkgcfg{libs});
 $gnomeprint2->add_xs (<xs/*.xs>);
