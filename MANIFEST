@@ -8,11 +8,6 @@ genmaps.pl
 gnomeprintperl.h
 maps
 perl-Gnome2-Print.spec.in
-debian/changelog
-debian/compat
-debian/control
-debian/copyright
-debian/rules
 examples/basic-font.pl
 examples/test-print.pl
 pm/Config.pm
