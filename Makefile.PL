@@ -4,6 +4,7 @@
 
 use 5.008;
 use Cwd;
+use File::Spec;
 use ExtUtils::MakeMaker;
 use ExtUtils::Depends;
 use Glib::PkgConfig;
@@ -30,7 +31,8 @@ $gnomeprint2->set_inc ($pkgcfg{cflags} . ' -I. -I./build ');
 $gnomeprint2->set_libs ($pkgcfg{libs});
 $gnomeprint2->add_xs (<xs/*.xs>);
 $gnomeprint2->add_pm ('Print.pm' => '$(INST_LIBDIR)/Gnome2/Print.pm');
-$gnomeprint2->add_typemaps (map {cwd().'/'.$_} 'build/gnomeprintperl.typemap');
+my $cwd = cwd();
+$gnomeprint2->add_typemaps (map {File::Spec->catfile($cwd,$_)} 'build/gnomeprintperl.typemap');
 $gnomeprint2->add_headers ('gnomeprintperl.h');
 
 $gnomeprint2->install (qw(gnomeprintperl.h build/gnomeprintperl-autogen.h));
