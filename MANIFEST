@@ -27,6 +27,7 @@ t/04.GnomePrintDialog.t
 t/05.GnomeFont.t
 t/06.GnomeFontDialog.t
 t/07.GnomePrintUnit.t
+t/08.GnomePrintPaper.t
 xs/GnomeFont.xs
 xs/GnomeFontDialog.xs
 xs/GnomeFontFace.xs
