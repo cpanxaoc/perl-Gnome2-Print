@@ -72,11 +72,52 @@ GnomeFontFace_noinc  *
 gnome_font_get_face (font)
 	GnomeFont 	* font
 
-## These are defined inside GnomeCanvas
-##ArtPoint       *gnome_font_get_glyph_stdadvance (GnomeFont *font, gint glyph, ArtPoint *advance);
-##ArtDRect       *gnome_font_get_glyph_stdbbox    (GnomeFont *font, gint glyph, ArtDRect *bbox);
+##ArtPoint *gnome_font_get_glyph_stdadvance (GnomeFont *font, gint glyph, ArtPoint *advance);
+void
+gnome_font_get_glyph_stadvance (font, glyph)
+	GnomeFont	* font
+	gint		glyph
+    PREINIT:
+    	ArtPoint advance;
+    PPCODE:
+	gnome_font_get_glyph_stdadvance (font, glyph, &advance);
+	EXTEND (SP, 2);
+	PUSHs (sv_2mortal (newSVnv (advance.x)));
+	PUSHs (sv_2mortal (newSVnv (advance.y)));
+
+##ArtDRect *gnome_font_get_glyph_stdbbox (GnomeFont *font, gint glyph, ArtDRect *bbox);
+void
+gnome_font_get_glyph_stdbbox (font, glyph)
+	GnomeFont	* font
+	gint		glyph
+    PREINIT:
+    	ArtDRect bbox;
+    PPCODE:
+	gnome_font_get_glyph_stdbbox (font, glyph, &bbox);
+	EXTEND (SP, 4);
+	PUSHs (sv_2mortal (newSVnv (bbox.x0)));
+	PUSHs (sv_2mortal (newSVnv (bbox.y0)));
+	PUSHs (sv_2mortal (newSVnv (bbox.x1)));
+	PUSHs (sv_2mortal (newSVnv (bbox.y1)));
+
+### ArtBpath is a matrix (2x3) of double, representing a bezier path element.
+### Unfortunately, it has also an element taken from an enum that declares the
+### state of the bezier path; the enum is not a registered type.
 ##const ArtBpath *gnome_font_get_glyph_stdoutline (GnomeFont *font, gint glyph);
-##ArtPoint       *gnome_font_get_glyph_stdkerning (GnomeFont *font, gint glyph0, gint glyph1, ArtPoint *kerning);
+
+##ArtPoint *gnome_font_get_glyph_stdkerning (GnomeFont *font, gint glyph0, gint glyph1, ArtPoint *kerning);
+void
+gnome_font_get_glyph_stdkerning (font, glyph0, glyph1)
+	GnomeFont	* font
+	gint		glyph0
+	gint		glyph1
+    PREINIT:
+    	ArtPoint kerning;
+    PPCODE:
+    	gnome_font_get_glyph_stdkerning (font, glyph0, glyph1, &kerning);
+	EXTEND (SP, 2);
+	PUSHs (sv_2mortal (newSVnv (kerning.x)));
+	PUSHs (sv_2mortal (newSVnv (kerning.y)));
 
 gdouble 
 gnome_font_get_glyph_width (font, glyph)
