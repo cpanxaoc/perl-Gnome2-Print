@@ -1,3 +1,13 @@
+2003/12/23 00:02 (-0500) muppetman
+
+	* xs/GnomeFont.xs, xs/GnomeFontDialog.xs, xs/GnomeFontFace.xs,
+	xs/GnomeFontPreview.xs, xs/GnomeFontSelection.xs, xs/GnomeGlyphList.xs,
+	xs/GnomePrintConfig.xs, xs/GnomePrintContext.xs, xs/GnomePrintJob.xs,
+	xs/GnomePrintPaperSelector.xs, xs/GnomePrintUnit.xs,
+	xs/GnomePrintUnitSelector.xs: remove the type specifiers on the class
+	parameters, to keep xsubpp from creating a value that will be unused
+	and therefore cause unused variable warnings.
+
 2003/12/19 00:20 (+0100) ebassi
 	
 	* Print.pm: version 0.61
