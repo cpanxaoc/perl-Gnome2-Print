@@ -1,0 +1,16 @@
+Source: libgnome2-print-perl
+Section: perl
+Priority: optional
+Build-Depends: debhelper (>= 3.0.16), perl (>= 5.8.0-7), libgnome2-perl, libgnomeprintui2.2-dev
+Maintainer: James Curbo <hannibal@adtrw.org>
+Standards-Version: 3.6.0
+
+Package: libgnome2-print-perl
+Architecture: any
+Depends: ${perl:Depends}, ${shlibs:Depends}, ${misc:Depends}, libgnome2-perl
+Description:  Bindings for libgnomeprint
+ This module allows you to use the GNOME Print libraries within your
+ applications written using the gtk2-perl wrapper.  The GNOME Print libraries
+ (also known as libgnomeprint and libgnomeprintui) allow you to create
+ printable documents (using various frontends) and offer standard widgets in
+ order to mainatin a UI consistent for all GNOME applications.

@@ -1,3 +1,9 @@
+2003/10/10 15:40 ebassi
+
+	* Print.pm: bumped to version 0.51
+	
+	* debian/: debianized package
+
 2003/09/21 20:19 rwmcfa1
 
 	* Makefile.PL: fixed bug in specfile generation
