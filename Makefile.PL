@@ -12,7 +12,7 @@ use ExtUtils::MakeMaker;
 # minimum required version of dependancies we need to build
 our %build_reqs = (
 	'perl-ExtUtils-Depends'   => '0.1',
-	'perl-ExtUtils-PkgConfig' => '0.1',
+	'perl-ExtUtils-PkgConfig' => '1.03',
 	'perl-Glib'               => '1.040',
 	'perl-Gtk2'               => '1.040',
 	'GnomePrint'              => '2.2.0.0',
@@ -75,7 +75,8 @@ $gnomeprint2->set_libs ($pkgcfg{libs});
 $gnomeprint2->add_xs (@xs_files);
 $gnomeprint2->add_pm (%pm_files);
 my $cwd = cwd();
-$gnomeprint2->add_typemaps (File::Spec->catfile($cwd, 'build/gnomeprintperl.typemap'));
+$gnomeprint2->add_typemaps (map { File::Spec->catfile ($cwd, $_) }
+							'build/gnomeprintperl.typemap', 'gnomeprint.typemap');
 $gnomeprint2->install (qw(gnomeprintperl.h
 		build/gnomeprintperl-autogen.h
 		build/gnomeprintperl-version.h));
@@ -94,7 +95,11 @@ WriteMakefile(
 sub MY::postamble
 {
 	return Glib::MakeHelper->postamble_clean ()
-	     . Glib::MakeHelper->postamble_docs (@main::xs_files)
+	     . Glib::MakeHelper->postamble_docs_full (
+		 DEPENDS => $gnomeprint2,
+		 DOCTYPES => 'doctypes',
+		 COPYRIGHT_FROM => 'copyright.pod',
+		   )
 	     . Glib::MakeHelper->postamble_rpms (
 		'GNOMEPRINT' => $build_reqs{'GnomePrint'},
 		'PERL_EXTUTILS_DEPENDS' => 
