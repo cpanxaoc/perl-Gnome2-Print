@@ -1,0 +1,5 @@
+2003/08/16 hh:mm ebassi
+
+	* *: initial ChangeLog entry.  libgnomeprintui is completely wrapped,
+	     libgnomeprint binding lacks of GnomePrintUnit, GnomePrintPaper,
+	     GnomeFontFace and GnomeGlyphList.
