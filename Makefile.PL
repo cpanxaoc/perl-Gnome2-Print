@@ -69,7 +69,7 @@ ExtUtils::PkgConfig->write_version_macros ("build/gnomeprintperl-version.h",
 Gtk2::CodeGen->parse_maps ('gnomeprintperl');
 Gtk2::CodeGen->write_boot (ignore => '^Gnome2::Print$');
 
-my $gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gnome2::VFS', 'Gtk2', 'Glib');
+my $gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gtk2', 'Glib');
 $gnomeprint2->set_inc ($pkgcfg{cflags} . ' -I. -I./build ');
 $gnomeprint2->set_libs ($pkgcfg{libs});
 $gnomeprint2->add_xs (@xs_files);

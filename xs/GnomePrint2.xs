@@ -1,4 +1,3 @@
-#include <gnome2perl.h>
 #include "gnomeprintperl.h"
 
 
