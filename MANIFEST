@@ -1,14 +1,19 @@
+AUTHORS
 ChangeLog
+copyright.pod
+doctypes
 examples/basic-font.pl
 examples/buffer_print.pl
 examples/test-print.pl
 genmaps.pl
+gnomeprint.typemap
 gnomeprintperl.h
 Makefile.PL
 MANIFEST
 MANIFEST.SKIP
 maps
 META.yml			Module meta-data (added by MakeMaker)
+NEWS
 perl-Gnome2-Print.spec.in
 pm/Config.pm
 pm/Font.pm
