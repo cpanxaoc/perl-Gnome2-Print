@@ -68,8 +68,8 @@ Gtk2::CodeGen->write_boot (ignore => '^Gnome2::Print$');
 our @xs_files = <xs/*.xs>;
 our %pm_files = (
     'Print.pm'		=> '$(INST_LIBDIR)/Print.pm',
-    'pm/Config.pm'	=> '$(INST_LIBDIR)/Print/Config::Constants.pm',
-    'pm/Font.pm'	=> '$(INST_LIBDIR)/Print/Font::Constants.pm',
+    'pm/Config.pm'	=> '$(INST_LIBDIR)/Print/Config/Constants.pm',
+    'pm/Font.pm'	=> '$(INST_LIBDIR)/Print/Font/Constants.pm',
 );
 our %pod_files = (
     'Print.pm'		=> '$(INST_MAN3DIR)/Gnome2::Print.$(MAN3EXT)',
