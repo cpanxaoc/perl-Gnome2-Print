@@ -33,9 +33,9 @@ my %pm_files = (
 );
 
 my %pod_files = (
-    'Print.pm'		=> '$(INST_MAN3DIR)/Print.$(MAN3EXT)',
-    'pm/Config.pm'	=> '$(INST_MAN3DIR)/Print::Config.$(MAN3EXT)',
-    'pm/Font.pm'	=> '$(INST_MAN3DIR)/Print::Font.$(MAN3EXT)',
+    'Print.pm'		=> '$(INST_MAN3DIR)/Gnome2::Print.$(MAN3EXT)',
+    'pm/Config.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Config.$(MAN3EXT)',
+    'pm/Font.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Font.$(MAN3EXT)',
 );
 
 $gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gtk2', 'Glib');

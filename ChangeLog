@@ -1,3 +1,8 @@
+2003/08/22 12:37 ebassi
+
+	* Makefile.PL: prefixed the filename of the man pages with the correct
+	  namespace (Gnome2::*).
+
 2003/08/22 02:19 muppetman
 
 	* README: new file, need it if you're going to distribute
