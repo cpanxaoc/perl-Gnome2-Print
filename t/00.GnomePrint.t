@@ -10,4 +10,4 @@ BEGIN { use_ok('Gnome2::Print') };
 
 #########################
 
-ok( $version = Gnome2::Print->get_version );
+ok( Gnome2::Print->get_version_info );

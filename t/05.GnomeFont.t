@@ -18,11 +18,10 @@ ok( $weight = Gnome2::Print::Font->bold );
 use_ok('Gnome2::Print::Font::Constants');
 ok( $weight = Gnome2::Print::Font::Constants->GNOME_FONT_BOLD );
 
-ok( @font_list = Gnome2::Print::Font->list );
+ok( Gnome2::Print::Font->list );
 ok( @family_list = Gnome2::Print::Font->family_list );
-ok( @style_list = Gnome2::Print::Font->style_list($family_list[0]) );
+ok( Gnome2::Print::Font->style_list($family_list[0]) );
 
 ok( $face = Gnome2::Print::FontFace->find_closest("Sans") );
 ok( $face->get_family_name );
-($x0, $y0, $x1, $y1) = $face->get_stdbbox;
-ok(1);
+ok( $face->get_stdbbox );

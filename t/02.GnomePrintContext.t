@@ -10,4 +10,4 @@ BEGIN { use_ok('Gnome2::Print') };
 
 #########################
 
-ok( $config = Gnome2::Print::Config->default );
+ok( Gnome2::Print::Config->default );
