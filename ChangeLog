@@ -1,3 +1,21 @@
+2004/07/04 21:41 (+0200) ebassi
+	
+	A copyright.pod
+	A gnomeprint.typemap
+	A doctypes
+	
+	* Makefile.PL: update required versions for ExtUtils::*; update the
+	maps list.
+
+	* xs/GnomePrintPaper.xs: implemented:
+		gnome_print_paper_get_default
+		gnome_print_paper_by_name
+		gnome_print_paper_get_by_size
+		gnome_print_paper_get_closest_by_size
+		gnome_print_paper_get_list
+	GnomePrintPaper is an unregistered boxed type; in perl it's an
+	hashref.
+
 2004/05/29 01:38 (+0100) ebassi
 	
 	* Print.pm, README: new release: 0.92.
