@@ -5,12 +5,13 @@
 
 #########################
 
-use Test::More tests => 4;
+use Test::More tests => 7;
 BEGIN { use_ok('Gnome2::Print') };
 
 #########################
 
 ok( $default_unit = Gnome2::Print::Unit->get_default );
-ok( $pixel_unit = Gnome2::Print::Unit->get_by_name("Inch") );
+ok( $inch_unit = Gnome2::Print::Unit->get_by_name("Inch") );
+ok( $point_unit = Gnome2::Print::Unit->get_by_abbreviation("pt") );
 
-ok( $distance = $default_unit->convert_distance($pixel_unit) );
+ok( $unit = Gnome2::Print::Unit->get_identity ($default_unit->base) );

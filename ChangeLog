@@ -1,3 +1,7 @@
+2003/08/21 0:41 ebassi
+
+	* t/07.GnomePrintUnit.t: fixed GnomePrintUnit test.
+
 2003/08/21 0:22 ebassi
 	
 	* xs/GnomePrintUnit.xs: implemented Gnome2::Print::Unit methods.
