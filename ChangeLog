@@ -1,3 +1,7 @@
+2003/12/02 18:22 (+0100) ebassi
+
+	* gnomeprintperl.h: include gperl.h instead of gnome2perl.h.
+
 2003/12/02 12:46 (-0500) muppetman
 
 	* t/06.GnomeFontDialog.t: this one slipped through the cracks when
