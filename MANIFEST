@@ -3,6 +3,7 @@ MANIFEST
 MANIFEST.SKIP
 Makefile.PL
 Print.pm
+README
 examples/basic-font.pl
 examples/test-print.pl
 genmaps.pl
