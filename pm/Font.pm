@@ -1,4 +1,4 @@
-package Gnom2::Print::Font;
+package Gnome2::Print::Font;
 
 use strict;
 require Exporter;
