@@ -1,3 +1,8 @@
+2003/08/23 10:25 ebassi
+	
+	* pm/Config.pm, pm/Font.pm: corrected some typos in the pod
+	  documentation.
+	
 2003/08/22 12:37 ebassi
 
 	* Makefile.PL: prefixed the filename of the man pages with the correct

@@ -69,7 +69,7 @@ use constant GNOME_PRINT_KEY_PREFERED_UNIT => "Settings.Document.PreferedUnit"
 
 =head1 NAME
 
-Gnome2::Print::Config - constant for use with Gnom2::Print::Config
+Gnome2::Print::Config - constants for use with Gnom2::Print::Config
 
 =head1 SYNOPSIS
 
@@ -119,10 +119,10 @@ methods:
   GNOME_PRINT_KEY_DOCUMENT_NAME
   GNOME_PRINT_KEY_PREFERED_UNIT
  
-These weights are also available without importing this module, using
+These keys are also available without importing this module, using
 Gnome2::Print::Print-E<gt>I<key>, e.g.:
 
-  Gnome2::Print::Print->key_output_filename;
+  Gnome2::Print::Config->key_output_filename;
 
 =head1 BUGS
 

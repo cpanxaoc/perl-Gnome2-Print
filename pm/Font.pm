@@ -43,7 +43,7 @@ use constant GNOME_FONT_HEAVIEST => 1100;
 
 =head1 NAME
 
-Gnome2::Print::Font - constant for use with Gnom2::Print::Font
+Gnome2::Print::Font - constants for use with Gnom2::Print::Font
 
 =head1 SYNOPSIS
 
@@ -62,7 +62,7 @@ They use the fully-prefixed names from the C documentation.
 =head1 EXPORT
 
 GnomeFontWeight is an enumeration, but it's not registered inside the Glib
-type system.
+type system:
 
   GNOME_FONT_LIGHTEST
   GNOME_FONT_EXTRA_LIGHT
