@@ -66,13 +66,13 @@ Gtk2::CodeGen->write_boot (ignore => '^Gnome2::Print$');
 our @xs_files = <xs/*.xs>;
 my %pm_files = (
     'Print.pm'		=> '$(INST_LIBDIR)/Print.pm',
-    'pm/Config.pm'	=> '$(INST_LIBDIR)/Print/Config.pm',
-    'pm/Font.pm'	=> '$(INST_LIBDIR)/Print/Font.pm',
+    'pm/Config.pm'	=> '$(INST_LIBDIR)/Print/Config::Constants.pm',
+    'pm/Font.pm'	=> '$(INST_LIBDIR)/Print/Font::Constants.pm',
 );
 my %pod_files = (
     'Print.pm'		=> '$(INST_MAN3DIR)/Gnome2::Print.$(MAN3EXT)',
-    'pm/Config.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Config.$(MAN3EXT)',
-    'pm/Font.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Font.$(MAN3EXT)',
+    'pm/Config.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Config::Constants.$(MAN3EXT)',
+    'pm/Font.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Font::Constants.$(MAN3EXT)',
     Glib::MakeHelper->do_pod_files (@xs_files),
 );
 

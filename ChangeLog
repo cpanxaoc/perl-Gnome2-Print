@@ -1,3 +1,13 @@
+2003/11/28 18:34 (+0100) ebassi
+
+	* Makefile.PL, pm/Config.pm, pm/Font.pm, t/05.GnomeFont.t: moved
+	  constants to another namespace to avoid collisions with the
+	  respective classes; these are the new namespaces for Config and
+	  Font constants:
+	  	
+		Gnome2::Print::Config -> Gnome2::Print::Config::Constants
+		Gnome2::Print::Font   -> Gnome2::Print::Font::Constants
+
 2003/11/25 17:26 (-0500) rwmcfa1
 
 	* Makefile.PL, xs/GnomePrint2.xs: add apidoc auto generation stuff

@@ -1,4 +1,4 @@
-package Gnome2::Print::Font;
+package Gnome2::Print::Font::Constants;
 
 use strict;
 require Exporter;
@@ -43,13 +43,13 @@ use constant GNOME_FONT_HEAVIEST => 1100;
 
 =head1 NAME
 
-Gnome2::Print::Font - constants for use with Gnom2::Print::Font
+Gnome2::Print::Font::Constants - constants for use with Gnom2::Print::Font
 
 =head1 SYNOPSIS
 
   use Gnome2::Print; # gets the actual Gnome2::Print::Font objects and methods
 
-  use Gnome2::Print::Font; # load extra constants
+  use Gnome2::Print::Font::Constants; # load extra constants
 
 =head1 DESCRIPTION
 

@@ -1,4 +1,4 @@
-package Gnom2::Print::Config;
+package Gnom2::Print::Config::Constants;
 
 use strict;
 require Exporter;
@@ -69,13 +69,13 @@ use constant GNOME_PRINT_KEY_PREFERED_UNIT => "Settings.Document.PreferedUnit"
 
 =head1 NAME
 
-Gnome2::Print::Config - constants for use with Gnom2::Print::Config
+Gnome2::Print::Config::Constants - constants for use with Gnom2::Print::Config
 
 =head1 SYNOPSIS
 
-  use Gnome2::Print; # gets the actual Gnome2::Print::Font objects and methods
+  use Gnome2::Print; # gets the actual Gnome2::Print::Config objects and methods
 
-  use Gnome2::Print::Config; # load extra constants
+  use Gnome2::Print::Config::Constants; # load extra constants
 
 =head1 DESCRIPTION
 
