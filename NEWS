@@ -1,0 +1,6 @@
+Overview of changes since 0.92
+==============================
+
+* Build system updates.  [Emmanuele]
+* Implemented Gnome2::Print::Paper.  [Emmanuele]
+* Started NEWS.
