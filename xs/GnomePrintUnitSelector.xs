@@ -32,3 +32,7 @@ gnome_print_unit_selector_remove_adjustment (selector, adjustment)
 GnomePrintUnit_own *
 gnome_print_unit_selector_get_unit (selector)
 	GnomePrintUnitSelector * selector
+    CODE:
+	RETVAL = (GnomePrintUnit *) gnome_print_unit_selector_get_unit (selector);
+    OUTPUT:
+	 RETVAL

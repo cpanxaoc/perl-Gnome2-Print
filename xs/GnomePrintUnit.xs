@@ -35,28 +35,36 @@ members (GnomePrintUnit * unit)
 GnomePrintUnit_copy *
 gnome_print_unit_get_identity (class, base)
 	guint base
-    C_ARGS:
-    	base
+    CODE:
+	RETVAL = (GnomePrintUnit *) gnome_print_unit_get_identity (base);
+    OUTPUT:
+	RETVAL
 
 ##const GnomePrintUnit *gnome_print_unit_get_default (void);
 GnomePrintUnit_copy *
 gnome_print_unit_get_default (class)
-    C_ARGS:
-    	/* void */
+    CODE:
+	RETVAL = (GnomePrintUnit *) gnome_print_unit_get_default ();
+    OUTPUT:
+	RETVAL
 
 ##const GnomePrintUnit *gnome_print_unit_get_by_name (const guchar *name);
 GnomePrintUnit_copy *
 gnome_print_unit_get_by_name (class, name)
 	const guchar * name
-    C_ARGS:
-    	name
+    CODE:
+	RETVAL = (GnomePrintUnit *) gnome_print_unit_get_by_name (name);
+    OUTPUT:
+	RETVAL
 
 ##const GnomePrintUnit *gnome_print_unit_get_by_abbreviation (const guchar *abbreviation);
 GnomePrintUnit_copy *
 gnome_print_unit_get_by_abbreviation (class, abbreviation)
 	const guchar * abbreviation
-    C_ARGS:
-    	abbreviation
+    CODE:
+	RETVAL = (GnomePrintUnit *) gnome_print_unit_get_by_abbreviation (abbreviation);
+    OUTPUT:
+	RETVAL
 
 ##GList * gnome_print_unit_get_list (guint bases);
 =for apidoc
