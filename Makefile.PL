@@ -13,8 +13,8 @@ use ExtUtils::MakeMaker;
 our %build_reqs = (
 	'perl-ExtUtils-Depends'   => '0.1',
 	'perl-ExtUtils-PkgConfig' => '0.1',
-	'perl-Glib'               => '1.012',
-	'perl-Gtk2'               => '1.012',
+	'perl-Glib'               => '1.020',
+	'perl-Gtk2'               => '1.020',
 	'GnomePrint'              => '2.2.0.0',
 );
 
@@ -32,7 +32,7 @@ unless (eval "use ExtUtils::Depends;"
            # it's recent enough, too 
            . "use Glib '$build_reqs{'perl-Glib'}';"
            . "use Gtk2 '$build_reqs{'perl-Gtk2'}';"
-		   . "use Glib::MakeHelper;"
+           . "use Glib::MakeHelper;"
            . "1") {
    warn "$@\n";
    WriteMakefile(
