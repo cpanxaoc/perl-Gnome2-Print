@@ -5,13 +5,21 @@
 
 #########################
 
-use Test::More tests => 5;
-BEGIN { use_ok('Gnome2::Print') };
+use Gtk2;
+use Test::More;
+use Gnome2::Print;
+
+if( Gtk2->init_check )
+{
+	plan tests => 4;
+}
+else
+{
+	plan skip_all =>
+		'Gtk2->init_check failed, probably unable to open DISPLAY';
+}
 
 #########################
-
-use Gtk2;
-Gtk2->init;
 
 $config = Gnome2::Print::Config->default;
 $job = Gnome2::Print::Job->new($config);

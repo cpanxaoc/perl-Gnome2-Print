@@ -24,7 +24,7 @@ our %runtime_reqs = (
 # Writing a fake Makefile ensures that CPAN will pick up the correct
 # dependencies and install them.
 unless (eval "use ExtUtils::Depends;"
-           . "use Glib::PkgConfig;"
+           . "use ExtUtils::PkgConfig;"
 	   . "use Gtk2::CodeGen;"
            # just seeing if Glib is available isn't enough, make sure
            # it's recent enough, too 
@@ -44,7 +44,8 @@ unless (eval "use ExtUtils::Depends;"
    exit 1; # not reached
 }
 
-%pkgcfg = Glib::PkgConfig->find ('libgnomeprintui-2.2');
+%pkgcfg = ExtUtils::PkgConfig->find ('libgnomeprintui-2.2 >= '
+				     .$build_reqs{GnomePrint});
 
 $runtime_reqs{GnomePrint} = $pkgcfg{modversion};
 
