@@ -75,4 +75,12 @@ sub const_cccmd {
 	$inherited .= ' -o $@';
 	$inherited;
 }
+
+sub postamble
+{
+	"
+realclean ::
+	-rm -Rf build
+"
+}
 package MAIN;
