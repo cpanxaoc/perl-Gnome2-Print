@@ -19,8 +19,8 @@ sub render_job
 	my $job = shift;
 	my $conf = $job->get_config;
 	my $pc = $job->get_context;
-	
-	my $font = Gnome2::Print::Font->find_closest("Sans", 16);
+		
+	my $font = Gnome2::Print::Font->find_closest_from_full_name("Monospace Regular 10");
 	my $font_name = $font->get_name;
 	print "Found: " . $font_name . "\n";
 
