@@ -22,8 +22,7 @@ gnome_print_dialog_get_config (gpd)
 
 ## void gnome_print_dialog_get_copies (GnomePrintDialog *gpd, gint *copies, gint *collate);
 =for apidoc
-This method returns a list containing the number of the copies and a boolean
-value stating if the copies should be collated.
+=signature ($copies, $collate) = $gpd->get_copies
 =cut
 void
 gnome_print_dialog_get_copies (gpd)

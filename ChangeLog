@@ -1,3 +1,9 @@
+2003/11/29 18:45 (+0100) ebassi
+
+	* xs/GnomePrintJob.xs, xs/GnomeFont.xs, xs/GnomeFontFace.xs,
+	  xs/GnomePrintConfig.xs, xs/GnomePrintDialog.xs: better apidoc for
+	  PPCODE in methods.
+
 2003/11/29 18:15 (+0100) ebassi
 
 	* t/*: updated tests for constants modules change, and for unused

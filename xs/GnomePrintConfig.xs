@@ -89,6 +89,9 @@ void
 gnome_print_config_dump (gpc)
 	GnomePrintConfig	* gpc
 
+=for apidoc
+=signature ($width, $height) = $gpc->get_page_size
+=cut
 void
 gnome_print_config_get_page_size (gpc)
 	GnomePrintConfig	* gpc

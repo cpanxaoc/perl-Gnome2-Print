@@ -74,8 +74,7 @@ gnome_font_get_face (font)
 
 ##ArtPoint *gnome_font_get_glyph_stdadvance (GnomeFont *font, gint glyph, ArtPoint *advance);
 =for apidoc
-This method returns the x and y coordinates of a given glyph's standard
-advance.
+=signature ($x, $y) = $font->get_glyph_stdadvance ($glyph)
 =cut
 void
 gnome_font_get_glyph_stadvance (font, glyph)
@@ -91,8 +90,7 @@ gnome_font_get_glyph_stadvance (font, glyph)
 
 ##ArtDRect *gnome_font_get_glyph_stdbbox (GnomeFont *font, gint glyph, ArtDRect *bbox);
 =for apidoc
-This method returns the coordinates (x0, y0, x1, y1) of a given glyph's
-standard bbox.
+=signature ($x0, $y0, $x1, $y1) = $font->get_glyph_stdbbox ($glyph)
 =cut
 void
 gnome_font_get_glyph_stdbbox (font, glyph)
@@ -115,8 +113,7 @@ gnome_font_get_glyph_stdbbox (font, glyph)
 
 ##ArtPoint *gnome_font_get_glyph_stdkerning (GnomeFont *font, gint glyph0, gint glyph1, ArtPoint *kerning);
 =for apidoc
-This method returns the x and y coordinates of the standard kerning of the
-two given glyphs.
+=signature ($x, $y) = $font->get_glyph_stdkerning ($glyph0, $glyph1)
 =cut
 void
 gnome_font_get_glyph_stdkerning (font, glyph0, glyph1)

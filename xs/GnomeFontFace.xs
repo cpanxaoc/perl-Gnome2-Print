@@ -78,6 +78,9 @@ const guchar *
 gnome_font_face_get_species_name (GnomeFontFace * face)
 
 ##const ArtDRect *gnome_font_face_get_stdbbox (GnomeFontFace *face);
+=for apidoc
+=signature ($x0, $y0, $x1, $y1) = $face->get_stdbbox
+=cut
 void
 gnome_font_face_get_stdbbox (face)
 	GnomeFontFace * face
@@ -95,6 +98,9 @@ gnome_font_face_get_stdbbox (face)
 	PUSHs (sv_2mortal (newSVnv (rect->y1)));
 
 ##ArtDRect *gnome_font_face_get_glyph_stdbbox (GnomeFontFace *face, gint glyph, ArtDRect * bbox);
+=for apidoc
+=signature ($x0, $y0, $x1, $y1) = $face->get_glyph_stdbbox ($glyph)
+=cut
 void
 gnome_font_face_get_glyph_stdbbox (face, glyph)
 	GnomeFontFace * face
@@ -110,6 +116,9 @@ gnome_font_face_get_glyph_stdbbox (face, glyph)
 	PUSHs (sv_2mortal (newSVnv (bbox.y1)));
 
 ##ArtPoint *gnome_font_face_get_glyph_stdadvance (GnomeFontFace *face, gint glyph, ArtPoint * advance);
+=for apidoc
+=signature ($x, $y) = $face->get_glyph_stdadvance ($glyph)
+=cut
 void
 gnome_font_face_get_glyph_stdadvance (face, glyph)
 	GnomeFontFace * face
@@ -124,6 +133,9 @@ gnome_font_face_get_glyph_stdadvance (face, glyph)
 
 ##const ArtBpath *gnome_font_face_get_glyph_stdoutline (GnomeFontFace *face, gint glyph);
 ##ArtPoint *gnome_font_face_get_glyph_stdkerning (GnomeFontFace *face, gint glyph0, gint glyph1, ArtPoint *kerning);
+=for apidoc
+=signature ($x, $y) = $face->get_glyph_stdkerning ($glyph0, $glyph1)
+=cut
 void
 gnome_font_face_get_glyph_stdkerning (face, glyph0, glyph1)
 	GnomeFontFace * face
