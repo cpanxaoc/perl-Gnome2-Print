@@ -2,6 +2,7 @@
 
 MODULE = Gnome2::Print::FontFace PACKAGE = Gnome2::Print::FontFace PREFIX = gnome_font_face_
 
+
 GnomeFontFace_noinc *
 gnome_font_face_find (class, name)
 	SV * class
@@ -61,15 +62,80 @@ gnome_font_face_get_font_default (face, size)
 	gdouble size
 
 ##const guchar * gnome_font_face_get_name         (const GnomeFontFace *face);
+const guchar *
+gnome_font_face_get_name (GnomeFontFace * face)
+
 ##const guchar * gnome_font_face_get_ps_name      (const GnomeFontFace *face);
+const guchar *
+gnome_font_face_get_ps_name (GnomeFontFace * face)
+
 ##const guchar * gnome_font_face_get_family_name  (const GnomeFontFace *face);
+const guchar *
+gnome_font_face_get_family_name (GnomeFontFace * face)
+
 ##const guchar * gnome_font_face_get_species_name (const GnomeFontFace *face);
+const guchar *
+gnome_font_face_get_species_name (GnomeFontFace * face)
 
 ##const ArtDRect *gnome_font_face_get_stdbbox (GnomeFontFace *face);
-##ArtDRect       *gnome_font_face_get_glyph_stdbbox (GnomeFontFace *face, gint glyph, ArtDRect * bbox);
-##ArtPoint       *gnome_font_face_get_glyph_stdadvance (GnomeFontFace *face, gint glyph, ArtPoint * advance);
+void
+gnome_font_face_get_stdbbox (face)
+	GnomeFontFace * face
+    PREINIT:
+    	const ArtDRect * rect;
+    PPCODE:
+    	rect = gnome_font_face_get_stdbbox (face);
+	if (! rect)
+		XSRETURN_UNDEF;
+	
+	EXTEND (SP, 4);
+	PUSHs (sv_2mortal (newSVnv (rect->x0)));
+	PUSHs (sv_2mortal (newSVnv (rect->y0)));
+	PUSHs (sv_2mortal (newSVnv (rect->x1)));
+	PUSHs (sv_2mortal (newSVnv (rect->y1)));
+
+##ArtDRect *gnome_font_face_get_glyph_stdbbox (GnomeFontFace *face, gint glyph, ArtDRect * bbox);
+void
+gnome_font_face_get_glyph_stdbbox (face, glyph)
+	GnomeFontFace * face
+	gint glyph
+    PREINIT:
+    	ArtDRect bbox;
+    PPCODE:
+    	gnome_font_face_get_glyph_stdbbox (face, glyph, &bbox);
+	EXTEND (SP, 4);
+	PUSHs (sv_2mortal (newSVnv (bbox.x0)));
+	PUSHs (sv_2mortal (newSVnv (bbox.y0)));
+	PUSHs (sv_2mortal (newSVnv (bbox.x1)));
+	PUSHs (sv_2mortal (newSVnv (bbox.y1)));
+
+##ArtPoint *gnome_font_face_get_glyph_stdadvance (GnomeFontFace *face, gint glyph, ArtPoint * advance);
+void
+gnome_font_face_get_glyph_stdadvance (face, glyph)
+	GnomeFontFace * face
+	gint glyph
+    PREINIT:
+    	ArtPoint advance;
+    PPCODE:
+    	gnome_font_face_get_glyph_stdadvance (face, glyph, &advance);
+	EXTEND (SP, 2);
+	PUSHs (sv_2mortal (newSVnv (advance.x)));
+	PUSHs (sv_2mortal (newSVnv (advance.y)));
+
 ##const ArtBpath *gnome_font_face_get_glyph_stdoutline (GnomeFontFace *face, gint glyph);
-##ArtPoint       *gnome_font_face_get_glyph_stdkerning (GnomeFontFace *face, gint glyph0, gint glyph1, ArtPoint *kerning);
+##ArtPoint *gnome_font_face_get_glyph_stdkerning (GnomeFontFace *face, gint glyph0, gint glyph1, ArtPoint *kerning);
+void
+gnome_font_face_get_glyph_stdkerning (face, glyph0, glyph1)
+	GnomeFontFace * face
+	gint glyph0
+	gint glyph1
+    PREINIT:
+    	ArtPoint kerning;
+    PPCODE:
+    	gnome_font_face_get_glyph_stdkerning (face, glyph0, glyph1, &kerning);
+	EXTEND (SP, 2);
+	PUSHs (sv_2mortal (newSVnv (kerning.x)));
+	PUSHs (sv_2mortal (newSVnv (kerning.y)));
 
 ##GnomeFontWeight gnome_font_face_get_weight_code (GnomeFontFace *face);
 
@@ -115,3 +181,6 @@ gnome_font_face_get_glyph_width (face, glyph)
 #	gint glyph2
 
 ##const guchar   *gnome_font_face_get_glyph_ps_name (GnomeFontFace *face, gint glyph);
+const guchar *
+gnome_font_face_get_glyph_ps_name (GnomeFontFace *face, gint glyph)
+	
