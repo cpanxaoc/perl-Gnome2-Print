@@ -1,3 +1,24 @@
+2003/09/10 14:24 ebassi
+	
+	* xs/GnomeFontFace.xs: implemented:
+		gnome_font_face_find,
+		gnome_font_face_find_closest,
+		gnome_font_face_find_closest_from_weight_slant,
+		gnome_font_face_find_closest_from_pango_font,
+		gnome_font_face_find_closest_from_pango_description,
+		gnome_font_face_find_from_family_and_style,
+		gnome_font_face_get_font,
+		gnome_font_face_get_font_default,
+		gnome_font_face_is_italic,
+		gnome_font_face_is_fixed_width,
+		gnome_font_face_get_ascender,
+		gnome_font_face_get_descender,
+		gnome_font_face_get_underline_position,
+		gnome_font_face_get_underline_thickness,
+		gnome_font_face_get_num_glyphs,
+		gnome_font_face_get_glyph_width,
+		gnome_font_face_get_glyph_kerning
+	
 2003/09/06 19:23 rwmcfa1
 
 	* Makefile.PL: dist-rpms build target added
