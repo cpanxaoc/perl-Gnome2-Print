@@ -1,3 +1,7 @@
+/*
+ *  * $Header$
+ *   */
+
 #ifndef _GNOME_PRINT_PERL_H_
 #define _GNOME_PRINT_PERL_H_
 

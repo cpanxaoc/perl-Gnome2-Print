@@ -1,3 +1,7 @@
+#
+# $Header$
+#
+
 package Gnome2::Print;
 
 use 5.008;
