@@ -10,4 +10,5 @@ use_ok('Gnome2::Print');
 
 #########################
 
-is( scalar (@{ [Gnome2::Print->get_version_info] }), 3 );
+my @version = Gnome2::Print->GET_VERSION_INFO;
+is( @version, 3, 'version is three items long' );

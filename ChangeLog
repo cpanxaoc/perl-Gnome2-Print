@@ -1,3 +1,9 @@
+2004/03/14 23:55 (+0100) ebassi
+
+	* xs/GnomePrint2.xs
+	t/00.GnomePrint.t: Adapt to the new version information
+	implementation policy.
+
 2004/03/14 08:40 (+0100) ebassi
 
 	* Print.pm: unindent ABSTRACT text (patch by Torsten Schoenfeld).
