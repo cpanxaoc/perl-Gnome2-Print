@@ -1,3 +1,9 @@
+2003/08/22 02:19 muppetman
+
+	* README: new file, need it if you're going to distribute
+
+	* Print.pm: mangled my email, tailored Gtk2 text to Gnome2::Print
+
 2003/08/21 0:41 ebassi
 
 	* t/07.GnomePrintUnit.t: fixed GnomePrintUnit test.

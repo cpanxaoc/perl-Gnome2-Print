@@ -68,18 +68,10 @@ Gnome2::Print - Perl wrappers for the Gnome Print utilities.
 
 =head1 ABSTRACT
 
-  Perl bindings to the 2.x series of the Gtk+ widget set.
-  This module allows you to write graphical user interfaces in a perlish
-  and object-oriented way, freeing you from the casting and memory 
-  management in C, yet remaining very close in spirit to original API.
+  Perl bindings to the 2.2 series of the Gnome Print libraries,
+  for use with gtk2-perl.
 
 =head1 DESCRIPTION
-
-The Gnome2 module allows a perl developer to use the Gnome libraries.
-Find out more about Gnome+ at http://www.gnome.org.
-
-To discuss gtk2-perl, ask questions and flame/praise the authors,
-join gtk-perl-list@gnome.org at lists.gnome.org.
 
 This module allows you to use the GNOME Print libraries within your
 applications written using the gtk2-perl wrapper.  The GNOME Print libraries
@@ -87,13 +79,19 @@ applications written using the gtk2-perl wrapper.  The GNOME Print libraries
 printable documents (using various frontends) and offer standard widgets in
 order to mainatin a UI consistent for all GNOME applications.
 
+To discuss gtk2-perl, ask questions and flame/praise the authors,
+join gtk-perl-list@gnome.org at lists.gnome.org.
+
+Find out more about Gnome+ at http://www.gnome.org.
+
 =head1 SEE ALSO
 
 perl(1), Glib(3pm), Gtk2(3pm), Gnome2(3pm).
 
 =head1 AUTHOR
 
-muppet E<lt>scott@asofyet.orgE<gt>, Emmanuele Bassi E<lt>emmanuele.bassi@iol.itE<gt>
+Emmanuele Bassi E<lt>emmanuele.bassi@iol.itE<gt>,
+muppet E<lt>scott at asofyet dot orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
