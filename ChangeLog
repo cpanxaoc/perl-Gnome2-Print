@@ -1,3 +1,8 @@
+2004/01/14 21:38 (-0500) muppetman
+
+	* Makefile.PL, README: update requirements to 1.020, since we need
+	Glib::MakeHelper
+
 2003/12/31 02:27 (-0500) muppetman
 
 	* xs/GnomePrint2.xs: mark ax unused in functions which don't touch
