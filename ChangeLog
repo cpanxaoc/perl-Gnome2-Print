@@ -1,3 +1,15 @@
+2003/08/21 0:22 ebassi
+	
+	* xs/GnomePrintUnit.xs: implemented Gnome2::Print::Unit methods.
+	* xs/GnomePrintDialog.xs: default flag (=0) for GnomePrintDialog
+	  constructor.
+	* xs/GnomeFont.xs: corrected a stupid typo.
+	* Makefile.PL: removed libgnomeprintui-2.0 from the package
+	  configuration setup; libgnomeprintui-2.0 (version 1.11x), needed
+	  by GNOME 2.0, still uses the old Glib 1.2 type system, so it won't
+	  compile anyway. Only libgnomeprint/libgnomeprintui >= 2.2 will be
+	  supported.
+
 2003/08/19 21:11 rwmcfa1
 
 	* Makefile.PL: added realclean removal of build dir to postamble 
