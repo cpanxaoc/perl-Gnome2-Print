@@ -18,6 +18,6 @@ ok( $weight = Gnome2::Print::Font->bold );
 use_ok('Gnome2::Print::Font');
 ok( $weight = Gnome2::Print::Font::GNOME_FONT_BOLD );
 
-ok( @font_list = Gnome2::Print::Font->list );
+ok( Gnome2::Print::Font->list );
 ok( @family_list = Gnome2::Print::Font->family_list );
-ok( @style_list = Gnome2::Print::Font->style_list($family_list[0]) );
+ok( Gnome2::Print::Font->style_list($family_list[0]) );
