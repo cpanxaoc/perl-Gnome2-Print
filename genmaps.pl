@@ -1,20 +1,13 @@
-#read !grep _TYPE_ /usr/include/gtk-2.0/gtk/*.h | grep get_type  
-#% s/^.*[ \t]\([_A-Z0-9]*_TYPE_[_A-Z0-9]*\)[ \t].*$/\1/ 
-#
-# $Header$
-#
-
-
 =out
 
-libgnomeprint-2.0
-libgnomeprintui-2.0
+libgnomeprint-2.2
+libgnomeprintui-2.2
 
 =cut
 
 @dirs = (
-	'/usr/include/libgnomeprint-2.0/libgnomeprint/',
-	'/usr/include/libgnomeprintui-2.0/libgnomeprintui/',
+	'/usr/include/libgnomeprint-2.2/libgnomeprint/',
+	'/usr/include/libgnomeprintui-2.2/libgnomeprintui/',
 );
 
 foreach $dir (@dirs) {
@@ -32,14 +25,21 @@ select FOO;
 
 print '#include <stdio.h>
 #include <gnome.h>
+
+#include <libgnomeprint/gnome-font.h>
+#include <libgnomeprint/gnome-font-face.h>
+#include <libgnomeprint/gnome-glyphlist.h>
 #include <libgnomeprint/gnome-print.h>
+#include <libgnomeprint/gnome-print-config.h>
+#include <libgnomeprint/gnome-print-job.h>
+#include <libgnomeprint/libgnomeprint-enum-types.h>
+
 #include <libgnomeprintui/gnome-font-dialog.h>
-#include <libgnomeprintui/gnome-print-copies.h>
 #include <libgnomeprintui/gnome-print-dialog.h>
-#include <libgnomeprintui/gnome-printer-dialog.h>
-#include <libgnomeprintui/gnome-print-master-preview.h>
-#include <libgnomeprintui/gnome-print-paper-selector.h>
+#include <libgnomeprintui/gnome-print-job-preview.h>
 #include <libgnomeprintui/gnome-print-preview.h>
+#include <libgnomeprintui/gnome-print-paper-selector.h>
+#include <libgnomeprintui/gnome-print-unit-selector.h>
 
 const char * find_base (GType gtype)
 {
@@ -94,16 +94,13 @@ print '
 close FOO;
 select STDOUT;
 
-system 'gcc -DGTK_DISABLE_DEPRECATED -Wall -o foo foo.c `pkg-config libgnomeui-2.0 libgnomeprintui-2.0 --cflags --libs`'
+system 'gcc -DGTK_DISABLE_DEPRECATED -Wall -o foo foo.c `pkg-config libgnomeui-2.0 libgnomeprint-2.2 libgnomeprintui-2.2 --cflags --libs`'
 	and die "couldn't compile helper program";
 
-# these are matched in order; for example, GnomePrinter must test before
-# GnomePrint to avoid matching the wrong thing.
 @packagemap = (
-	[ GnomeFont    => 'Gnome2::Font' ],
-	[ GnomePaper   => 'Gnome2::Paper' ],
-	[ GnomePrinter => 'Gnome2::Printer' ],
 	[ GnomePrint   => 'Gnome2::Print' ],
+	[ GnomeFont    => 'Gnome2::Print::Font' ],
+	[ GnomeGlyphList => 'Gnome2::Print::GlyphList' ],
 	[ Gnome        => 'Gnome2' ], # fallback
 );
 

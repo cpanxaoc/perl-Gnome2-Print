@@ -42,22 +42,29 @@ XSLoader::load('Gnome2::Print', $VERSION);
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
-
 =head1 NAME
 
 Gnome2::Print - Perl wrappers for the Gnome Print utilities.
 
 =head1 SYNOPSIS
 
-  use Gtk2;
-  Gtk2->init;
-  my $window = Gtk2::Window->new ('toplevel');
-  my $button = Gtk2::Button->new ('Quit');
-  $button->signal_connect (clicked => sub { Gtk2->main_quit });
-  $window->add ($button);
-  $window->show_all;
-  Gtk2->main;
+  use Gnome2::Print;
+
+  my $job = Gnome2::Print::Job->new;
+  my $config = $job->get_config;
+  my $pc = $job->get_context;
+
+  my ($width, $height) = $config->get_page_size;
+  
+  $pc->beginpage("1");
+  
+  $pc->setlinewidth(3.0);
+  $pc->rect_stroked($width * .1, $height * .1, $width * .9, $height * .9);
+  
+  $pc->showpage;
+  
+  $job->render($pc);
+  $job->close;
 
 =head1 ABSTRACT
 
@@ -74,19 +81,23 @@ Find out more about Gnome+ at http://www.gnome.org.
 To discuss gtk2-perl, ask questions and flame/praise the authors,
 join gtk-perl-list@gnome.org at lists.gnome.org.
 
-If you have a web site set up for your module, mention it here.
-
-FIXME we have no other documentation, but we probably need it.
+This module allows you to use the GNOME Print libraries within your
+applications written using the gtk2-perl wrapper.  The GNOME Print libraries
+(also known as libgnomeprint and libgnomeprintui) allow you to create
+printable documents (using various frontends) and offer standard widgets in
+order to mainatin a UI consistent for all GNOME applications.
 
 =head1 SEE ALSO
 
-perl(1), Glib(1), Gtk2(1).
+perl(1), Glib(3pm), Gtk2(3pm), Gnome2(3pm).
 
 =head1 AUTHOR
 
-muppet E<lt>scott@asofyet.orgE<gt>
+muppet E<lt>scott@asofyet.orgE<gt>, Emmanuele Bassi E<lt>emmanuele.bassi@iol.itE<gt>
 
 =head1 COPYRIGHT AND LICENSE
+
+Copyright 2003 by Emmanuele Bassi
 
 Copyright 2003 by muppet
 
