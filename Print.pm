@@ -31,7 +31,7 @@ our @EXPORT = qw(
 	
 );
 
-our $VERSION = '0.92';
+our $VERSION = '0.93';
 
 sub dl_load_flags { 0x01 }
 
@@ -95,7 +95,7 @@ muppet E<lt>scott at asofyet dot orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2003 by Emmanuele Bassi
+Copyright 2003, 2004 by Emmanuele Bassi
 
 Copyright 2003 by muppet
 
