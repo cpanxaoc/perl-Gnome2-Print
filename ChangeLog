@@ -1,3 +1,8 @@
+2003/11/13 21:15 (-0500) muppetman
+
+	* Makefile.PL, README: require 1.00 rather than 1.00rc1 -- we disavow
+	the existence of the release candidates.
+
 2003/11/11 00:36 (-0500) muppetman
 
 	* MANIFEST, debian/*: remove the debian packaging files, since having
