@@ -6,12 +6,47 @@ use 5.008;
 use Cwd;
 use File::Spec;
 use ExtUtils::MakeMaker;
-use ExtUtils::Depends;
-use Glib::PkgConfig;
-use Gtk2::CodeGen;
 
+# minimum required version of dependancies we need to build
+our %build_reqs = (
+	'perl-ExtUtils-Depends'   => '0.1',
+	'perl-ExtUtils-PkgConfig' => '0.1',
+	'perl-Glib'               => '1.00rc1',
+	'perl-Gtk2'               => '1.00rc1',
+	'GnomePrint'              => '2.2.0.0',
+);
+
+# minimum required version of dependancies we need to run
+our %runtime_reqs = (
+	'GnomePrint'	=> undef,
+);
+
+# Writing a fake Makefile ensures that CPAN will pick up the correct
+# dependencies and install them.
+unless (eval "use ExtUtils::Depends;"
+           . "use Glib::PkgConfig;"
+	   . "use Gtk2::CodeGen;"
+           # just seeing if Glib is available isn't enough, make sure
+           # it's recent enough, too 
+           . "use Glib '$build_reqs{'perl-Glib'}';"
+           . "use Gtk2 '$build_reqs{'perl-Gtk2'}';"
+           . "1") {
+   warn "$@\n";
+   WriteMakefile(
+         PREREQ_FATAL => 1,
+         PREREQ_PM    => {
+            Glib::                => $build_reqs{'perl-Glib'},
+            Gtk2::                => $build_reqs{'perl-Gtk2'},
+            ExtUtils::Depends::   => $build_reqs{'perl-ExtUtils-Depends'},
+            ExtUtils::PkgConfig:: => $build_reqs{'perl-ExtUtils-PkgConfig'},
+         },
+   );
+   exit 1; # not reached
+}
 
 %pkgcfg = Glib::PkgConfig->find ('libgnomeprintui-2.2');
+
+$runtime_reqs{GnomePrint} = $pkgcfg{modversion};
 
 mkdir 'build', 0777;
 
@@ -80,16 +115,35 @@ sub postamble
 	my @dirs = qw{rpms rpms/BUILD rpms/RPMS rpms/SOURCES
 		      rpms/SPECS rpms/SRPMS};
 	my $cwd = getcwd();
+	
+	my %subs = (
+		'VERSION' => '$(VERSION)',
+		'SOURCE' => '$(DISTNAME)-$(VERSION).tar.gz',
+		'GNOMEPRINT_RUN' => $runtime_reqs{'GnomePrint'},
+		'GNOMEPRINT' => $build_reqs{'GnomePrint'},
+		'PERL_EXTUTILS_DEPENDS' => 
+			$build_reqs{'perl-ExtUtils-Depends'},
+		'PERL_EXTUTILS_PKGCONFIG' => 
+			$build_reqs{'perl-ExtUtils-PkgConfig'},
+		'PERL_GLIB' => $build_reqs{'perl-Glib'},
+		'PERL_GTK' => $build_reqs{'perl-Gtk2'},
+	);
+	
+	my $substitute = '$(PERL) -npe \''.join('; ', map {
+			"s/\\\@$_\\\@/$subs{$_}/g";
+		} keys %subs).'\'';
 
 	"
 realclean ::
-	-rm -Rf build perl-\$(DISTNAME).spec
+	-\$(RM_RF) build perl-\$(DISTNAME).spec
 
 rpms/:
 	-mkdir @dirs
 
+SUBSTITUTE=$substitute
+
 perl-\$(DISTNAME).spec: perl-\$(DISTNAME).spec.in \$(VERSION_FROM) Makefile
-	sed -e \"s/\@VERSION\@/\$(VERSION)/g\" -e \"s/\@SOURCE\@/\$(DISTNAME)-\$(VERSION).tar.gz/g\" \$< > \$@
+	\$(SUBSTITUTE) \$+ > \$@
 
 dist-rpms: Makefile dist perl-\$(DISTNAME).spec rpms/
 	cp \$(DISTNAME)-\$(VERSION).tar.gz rpms/SOURCES/
