@@ -13,7 +13,7 @@ BOOT:
 #include "boot.xsh"
 
 =for apidoc
-=signature (major_version, minor_version, micro_version) = Gnome2::Print::GET_VERSION_INFO
+=signature (major_version, minor_version, micro_version) = Gnome2::Print->GET_VERSION_INFO
 =cut
 void
 GET_VERSION_INFO (class)
