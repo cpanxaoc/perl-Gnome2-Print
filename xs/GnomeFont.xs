@@ -82,7 +82,7 @@ gnome_font_get_glyph_width (font, glyph)
 	GnomeFont 	* font
 	gint 		glyph
 
-### This is defined inside gnome-font.h, but it's not an expoerted symbol.
+### This is defined inside gnome-font.h, but it's not an exported symbol.
 ##gdouble 
 ##gnome_font_get_glyph_kerning (font, glyph1, glyph2)
 ##	GnomeFont 	* font
