@@ -39,6 +39,10 @@ constants (class)
 		case 13: RETVAL = GNOME_FONT_BLACK; break;
 		case 14: RETVAL = GNOME_FONT_EXTRABLACK; break; 
 		case 15: RETVAL = GNOME_FONT_HEAVIEST; break;
+
+		default: RETVAL = 0; /* you wouldn't want this, and in normal
+		                      * operation, we shouldn't trigger it.
+				      * it shuts up the compiler in -Wall. */
 	}
     OUTPUT:
 	RETVAL

@@ -22,6 +22,8 @@ members (GnomePrintUnit * unit)
 		case 4: RETVAL = newSVGChar (unit->abbr);        break;
 		case 5: RETVAL = newSVGChar (unit->plural);      break;
 		case 6: RETVAL = newSVGChar (unit->abbr_plural); break;
+
+		default: RETVAL = &PL_sv_undef;
 	}
     OUTPUT:
     	RETVAL

@@ -18,6 +18,8 @@ gnome_paper_selector_news (class, config, flags=0)
 		case 0: 
 			RETVAL = gnome_paper_selector_new_with_flags (config, flags);
 			break;
+
+		default: RETVAL = NULL;
 	}
     OUTPUT:
     	RETVAL

@@ -65,6 +65,8 @@ constants (class)
 		case 26: RETVAL = GNOME_PRINT_KEY_OUTPUT_FILENAME; break;
 		case 27: RETVAL = GNOME_PRINT_KEY_DOCUMENT_NAME; break;
 		case 28: RETVAL = GNOME_PRINT_KEY_PREFERED_UNIT; break;
+
+		default: RETVAL = NULL;
 	}
     OUTPUT:
 	RETVAL
