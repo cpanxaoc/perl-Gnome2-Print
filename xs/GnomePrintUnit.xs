@@ -61,6 +61,9 @@ gnome_print_unit_get_by_abbreviation (class, abbreviation)
     	abbreviation
 
 ##GList * gnome_print_unit_get_list (guint bases);
+=for apidoc
+This function returns a list of Gnome2::Print::Unit.
+=cut
 void
 gnome_print_unit_get_list (bases)
 	guint bases
@@ -81,6 +84,11 @@ MODULE = Gnome2::Print::Unit PACKAGE = Gnome2::Print::Unit PREFIX = gnome_print_
 ## impossible, otherwise TRUE; we return the distance on success, or undef on
 ## failure.
 ##gboolean gnome_print_convert_distance (gdouble *distance, const GnomePrintUnit *from, const GnomePrintUnit *to);
+=for apidoc
+=signature $distance = $from->convert_distance($to)
+	
+This function returns a double on success or undef on failure.
+=cut
 void
 gnome_print_convert_distance (from, to)
 	GnomePrintUnit * from
@@ -98,6 +106,11 @@ gnome_print_convert_distance (from, to)
 	PUSHs (sv_2mortal (newSVnv (distance)));
 
 ##gboolean gnome_print_convert_distance_full (gdouble *distance, const GnomePrintUnit *from, const GnomePrintUnit *to, gdouble ctmscale, gdouble devicescale);
+=for apidoc
+=signature $distance = $from->convert_distance_full($to, $ctmscale, $devicescale)
+
+This function returns a double on success or undef on failure.
+=cut
 void
 gnome_print_convert_distance_full (from, to, ctmscale, devicescale)
 	GnomePrintUnit * from

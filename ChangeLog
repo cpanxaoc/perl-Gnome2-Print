@@ -1,3 +1,23 @@
+2003/12/19 00:20 (+0100) ebassi
+	
+	* Print.pm: version 0.61
+	
+	* xs/GnomeGlyphList.xs: implemented:
+		gnome_glyphlist_advance
+		gnome_glyphlist_kerning
+		gnome_glyphlist_letterspace
+		gnome_glyphlist_font
+		gnome_glyphlist_moveto
+		gnome_glyphlist_rmoveto
+		gnome_glyphlist_glyph
+		gnome_glyphlist_glyphs
+		gnome_glyphlist_text_dumb
+	
+	* xs/GnomePrintUnit.xs: improved documentation.
+	
+	* xs/GnomePrintConfig.xs: implemented:
+		gnome_print_config_set_length
+
 2003/12/17 15:49 (+0100) ebassi
 	
 	* Print.pm: version 0.60

@@ -8,6 +8,7 @@ Makefile.PL
 MANIFEST
 MANIFEST.SKIP
 maps
+META.yml			Module meta-data (added by MakeMaker)
 perl-Gnome2-Print.spec.in
 pm/Config.pm
 pm/Font.pm
