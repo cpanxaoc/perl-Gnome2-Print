@@ -30,6 +30,7 @@ unless (eval "use ExtUtils::Depends;"
            # it's recent enough, too 
            . "use Glib '$build_reqs{'perl-Glib'}';"
            . "use Gtk2 '$build_reqs{'perl-Gtk2'}';"
+	   . "use Glib::MakeHelper;"
            . "1") {
    warn "$@\n";
    WriteMakefile(
@@ -62,22 +63,23 @@ Gtk2::CodeGen->write_boot (ignore => '^Gnome2::Print$');
 # the Glib extension, and to save config information for other modules which
 # will chain from this one.
 
+our @xs_files = <xs/*.xs>;
 my %pm_files = (
     'Print.pm'		=> '$(INST_LIBDIR)/Print.pm',
     'pm/Config.pm'	=> '$(INST_LIBDIR)/Print/Config.pm',
     'pm/Font.pm'	=> '$(INST_LIBDIR)/Print/Font.pm',
 );
-
 my %pod_files = (
     'Print.pm'		=> '$(INST_MAN3DIR)/Gnome2::Print.$(MAN3EXT)',
     'pm/Config.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Config.$(MAN3EXT)',
     'pm/Font.pm'	=> '$(INST_MAN3DIR)/Gnome2::Print::Font.$(MAN3EXT)',
+    Glib::MakeHelper->do_pod_files (@xs_files),
 );
 
 $gnomeprint2 = ExtUtils::Depends->new ('Gnome2::Print', 'Gnome2', 'Gnome2::VFS', 'Gtk2', 'Glib');
 $gnomeprint2->set_inc ($pkgcfg{cflags} . ' -I. -I./build ');
 $gnomeprint2->set_libs ($pkgcfg{libs});
-$gnomeprint2->add_xs (<xs/*.xs>);
+$gnomeprint2->add_xs (@xs_files);
 $gnomeprint2->add_pm (%pm_files);
 my $cwd = cwd();
 $gnomeprint2->add_typemaps (map {File::Spec->catfile($cwd,$_)} 'build/gnomeprintperl.typemap');
@@ -113,13 +115,9 @@ sub const_cccmd {
 
 sub postamble
 {
-	my @dirs = qw{rpms rpms/BUILD rpms/RPMS rpms/SOURCES
-		      rpms/SPECS rpms/SRPMS};
-	my $cwd = getcwd();
-	
-	my %subs = (
-		'VERSION' => '$(VERSION)',
-		'SOURCE' => '$(DISTNAME)-$(VERSION).tar.gz',
+	return Glib::MakeHelper->postamble_clean ()
+	     . Glib::MakeHelper->postamble_docs (@main::xs_files)
+	     . Glib::MakeHelper->postamble_rpms (
 		'GNOMEPRINT_RUN' => $runtime_reqs{'GnomePrint'},
 		'GNOMEPRINT' => $build_reqs{'GnomePrint'},
 		'PERL_EXTUTILS_DEPENDS' => 
@@ -128,27 +126,6 @@ sub postamble
 			$build_reqs{'perl-ExtUtils-PkgConfig'},
 		'PERL_GLIB' => $build_reqs{'perl-Glib'},
 		'PERL_GTK' => $build_reqs{'perl-Gtk2'},
-	);
-	
-	my $substitute = '$(PERL) -npe \''.join('; ', map {
-			"s/\\\@$_\\\@/$subs{$_}/g";
-		} keys %subs).'\'';
-
-	"
-realclean ::
-	-\$(RM_RF) build perl-\$(DISTNAME).spec
-
-rpms/:
-	-mkdir @dirs
-
-SUBSTITUTE=$substitute
-
-perl-\$(DISTNAME).spec: perl-\$(DISTNAME).spec.in \$(VERSION_FROM) Makefile
-	\$(SUBSTITUTE) \$< > \$@
-
-dist-rpms: Makefile dist perl-\$(DISTNAME).spec rpms/
-	cp \$(DISTNAME)-\$(VERSION).tar.gz rpms/SOURCES/
-	rpmbuild -ba --define \"_topdir $cwd/rpms\" perl-\$(DISTNAME).spec
-"
+	       );
 }
 package MAIN;

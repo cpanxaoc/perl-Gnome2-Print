@@ -4,6 +4,10 @@
 
 MODULE = Gnome2::Print	PACKAGE = Gnome2::Print	PREFIX = gnome_print_
 
+=for object Gnome2::Print::main
+
+=cut
+
 void
 get_version (class)
 	SV * class

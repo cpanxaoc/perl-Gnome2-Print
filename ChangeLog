@@ -1,5 +1,9 @@
 2003/11/25 17:26 (-0500) rwmcfa1
 
+	* Makefile.PL, xs/GnomePrint2.xs: add apidoc auto generation stuff
+
+2003/11/25 17:26 (-0500) rwmcfa1
+
 	* Makefile.PL: we depend on Gnome2-VFS now b/c Gnome2 does.
 
 2003/11/24 23:02 (-0500) rwmcfa1
