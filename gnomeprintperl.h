@@ -1,7 +1,7 @@
 #ifndef _GNOME_PRINT_PERL_H_
 #define _GNOME_PRINT_PERL_H_
 
-#include <gperl.h>
+#include <gtk2perl.h>
 
 /* basic include files */
 #include <libgnomeprint/gnome-font.h>
