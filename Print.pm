@@ -31,7 +31,7 @@ our @EXPORT = qw(
 	
 );
 
-our $VERSION = '0.94';
+our $VERSION = '0.95';
 
 sub dl_load_flags { 0x01 }
 

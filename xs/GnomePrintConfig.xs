@@ -162,6 +162,12 @@ gnome_print_config_gets (config, key)
 ##guchar * gnome_print_config_get (GnomePrintConfig *config, const guchar *key);
 ##gboolean gnome_print_config_set (GnomePrintConfig *config, const guchar *key, const guchar *value);
 
+gboolean
+gnome_print_config_set (config, key, value)
+	GnomePrintConfig * config
+	const guchar * key
+	const guchar * value
+
 ##gboolean gnome_print_config_get_boolean (GnomePrintConfig *config, const guchar *key, gboolean *val)
 
 ##gboolean gnome_print_config_get_int     (GnomePrintConfig *config, const guchar *key, gint *val);

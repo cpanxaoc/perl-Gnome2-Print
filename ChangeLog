@@ -1,3 +1,17 @@
+2005/08/13 01:03 (+0100) ebassi
+
+	* README, NEWS, Print.pm: update to version 0.95.
+	
+	* xs/GnomePrintConfig.xs: wrapped Gnome2::Print::Config::set, which
+	was left not bound.
+
+	* t/01.GnomePrintConfig.t: test Gnome2::Print::Config::set.
+
+	* xs/GnomePrintPaper.xs: change the Gnome2::Print::Paper wrapper into
+	a blessed reference.
+
+	* t/08.GnomePrintPaper.t: test Gnome2::Print::Paper name.
+
 2004/10/24 11:55 (-0400) rwmcfa1
 
 	* MANIFEST.SKIP: updates

@@ -3,21 +3,20 @@
 SV *
 newSVGnomePrintPaper (GnomePrintPaper * p)
 {
-	HV * h;
-	SV * r;
+	HV * object;
 
 	if (! p)
 		return newSVsv (&PL_sv_undef);
 
-	h = newHV ();
-	r = newRV_noinc ((SV *) h);	/* safe */
+	object = newHV ();
 	
-	hv_store (h, "name", 4, newSVGChar (p->name), 0);
-	hv_store (h, "width", 5, newSVnv (p->width), 0);
-	hv_store (h, "height", 6, newSVnv (p->height), 0);
-	hv_store (h, "version", 7, newSVuv (p->version), 0);
+	hv_store (object, "name", 4, newSVGChar (p->name), 0);
+	hv_store (object, "width", 5, newSVnv (p->width), 0);
+	hv_store (object, "height", 6, newSVnv (p->height), 0);
+	hv_store (object, "version", 7, newSVuv (p->version), 0);
 
-	return r;
+	return sv_bless (newRV_noinc ((SV *) h),
+			 gv_stashpv ("Gnome2::Print::Paper", 1));;
 }
 
 
