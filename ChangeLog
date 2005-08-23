@@ -1,3 +1,7 @@
+2005/08/23 00:45 (-0400) muppetman
+
+	* xs/GnomePrintPaper.xs: fix compile bug.
+
 2005/08/13 01:03 (+0100) ebassi
 
 	* README, NEWS, Print.pm: update to version 0.95.

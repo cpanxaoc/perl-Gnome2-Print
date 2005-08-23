@@ -15,7 +15,7 @@ newSVGnomePrintPaper (GnomePrintPaper * p)
 	hv_store (object, "height", 6, newSVnv (p->height), 0);
 	hv_store (object, "version", 7, newSVuv (p->version), 0);
 
-	return sv_bless (newRV_noinc ((SV *) h),
+	return sv_bless (newRV_noinc ((SV *) object),
 			 gv_stashpv ("Gnome2::Print::Paper", 1));;
 }
 
