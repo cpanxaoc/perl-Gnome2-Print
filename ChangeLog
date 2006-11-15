@@ -1,5 +1,10 @@
 2006-11-15  Emmanuele Bassi  <ebassi@gnome.org>
 
+	* README:
+	* Print.pm: Bump to 1.000.
+
+2006-11-15  Emmanuele Bassi  <ebassi@gnome.org>
+
 	* Print.pm: Add deprecation warning.
 
 	* README:
