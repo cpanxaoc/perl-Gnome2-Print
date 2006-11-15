@@ -13,8 +13,8 @@ use ExtUtils::MakeMaker;
 our %build_reqs = (
 	'perl-ExtUtils-Depends'   => '0.1',
 	'perl-ExtUtils-PkgConfig' => '1.03',
-	'perl-Glib'               => '1.040',
-	'perl-Gtk2'               => '1.040',
+	'perl-Glib'               => '1.120',
+	'perl-Gtk2'               => '1.120',
 	'GnomePrint'              => '2.2.0.0',
 );
 
@@ -22,7 +22,7 @@ our %build_reqs = (
 # dependencies and install them.
 unless (eval "use ExtUtils::Depends;"
            . "use ExtUtils::PkgConfig;"
-	   . "use Gtk2::CodeGen;"
+           . "use Gtk2::CodeGen;"
            # just seeing if Glib is available isn't enough, make sure
            # it's recent enough, too 
            . "use Glib '$build_reqs{'perl-Glib'}';"
@@ -45,7 +45,7 @@ unless (eval "use ExtUtils::Depends;"
 mkdir 'build', 0777;
 
 our %pkgcfg = ExtUtils::PkgConfig->find ('libgnomeprintui-2.2 >= '
-				     .$build_reqs{GnomePrint});
+                                         . $build_reqs{GnomePrint});
 
 our @xs_files = <xs/*.xs>;
 our %pm_files = (
@@ -96,17 +96,15 @@ sub MY::postamble
 {
 	return Glib::MakeHelper->postamble_clean ()
 	     . Glib::MakeHelper->postamble_docs_full (
-		 DEPENDS => $gnomeprint2,
-		 DOCTYPES => 'doctypes',
-		 COPYRIGHT_FROM => 'copyright.pod',
+            DEPENDS => $gnomeprint2,
+            DOCTYPES => 'doctypes',
+            COPYRIGHT_FROM => 'copyright.pod',
 		   )
 	     . Glib::MakeHelper->postamble_rpms (
-		'GNOMEPRINT' => $build_reqs{'GnomePrint'},
-		'PERL_EXTUTILS_DEPENDS' => 
-			$build_reqs{'perl-ExtUtils-Depends'},
-		'PERL_EXTUTILS_PKGCONFIG' => 
-			$build_reqs{'perl-ExtUtils-PkgConfig'},
-		'PERL_GLIB' => $build_reqs{'perl-Glib'},
-		'PERL_GTK' => $build_reqs{'perl-Gtk2'},
+            'GNOMEPRINT' => $build_reqs{'GnomePrint'},
+            'PERL_EXTUTILS_DEPENDS' => $build_reqs{'perl-ExtUtils-Depends'},
+            'PERL_EXTUTILS_PKGCONFIG' => $build_reqs{'perl-ExtUtils-PkgConfig'},
+            'PERL_GLIB' => $build_reqs{'perl-Glib'},
+            'PERL_GTK' => $build_reqs{'perl-Gtk2'},
 	       );
 }

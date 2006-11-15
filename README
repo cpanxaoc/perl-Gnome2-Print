@@ -53,14 +53,23 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
   perl >= 5.8.0
-  Glib >= 1.04 (perl module and requisite C libraries)
-  Gtk2 >= 1.04 (perl module and requisite C libraries)
+  Glib >= 1.12 (perl module and requisite C libraries)
+  Gtk2 >= 1.12 (perl module and requisite C libraries)
   libgnomeprintui-2.2 (C library)
+
+
+DEPRECATION WARNING
+
+With the release of GTK+ 2.10 both libgnomeprint and libgnomeprintui have
+been marked as deprecated and should not be used in newly released code.
+
+In order to use the new Print support in GTK+ you have to use the Gtk2
+module version >= 1.140 compiled against GTK+ >= 2.10.0.
 
 
 COPYRIGHT AND LICENSE
 
-Copyright (C) 2003,2004 by the gtk2-perl team (see the file AUTHORS for a
+Copyright (C) 2003-2006 by the gtk2-perl team (see the file AUTHORS for a
 complete list)
 
 This library is free software; you can redistribute it and/or

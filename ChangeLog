@@ -1,5 +1,12 @@
 2006-11-15  Emmanuele Bassi  <ebassi@gnome.org>
 
+	* Print.pm: Add deprecation warning.
+
+	* README:
+	* Makefile.PL: Update requirements.
+
+2006-11-15  Emmanuele Bassi  <ebassi@gnome.org>
+
 	Patch by Torsten Schoenfeld for removing signedness warnings.
 
 	* xs/GnomePrintConfig.xs:
