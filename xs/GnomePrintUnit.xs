@@ -15,13 +15,13 @@ members (GnomePrintUnit * unit)
 	Gnome2::Print::Unit::abbr_plural = 6
     CODE:
     	switch (ix) {
-		case 0: RETVAL = newSViv (unit->version);        break;
-		case 1: RETVAL = newSViv (unit->base);           break;
-		case 2: RETVAL = newSVnv (unit->unittobase);     break;
-		case 3: RETVAL = newSVGChar (unit->name);        break;
-		case 4: RETVAL = newSVGChar (unit->abbr);        break;
-		case 5: RETVAL = newSVGChar (unit->plural);      break;
-		case 6: RETVAL = newSVGChar (unit->abbr_plural); break;
+		case 0: RETVAL = newSViv (unit->version);                 break;
+		case 1: RETVAL = newSViv (unit->base);                    break;
+		case 2: RETVAL = newSVnv (unit->unittobase);              break;
+		case 3: RETVAL = newSVpv ((char*)unit->name, PL_na);      break;
+		case 4: RETVAL = newSVpv ((char*)unit->abbr, PL_na);      break;
+		case 5: RETVAL = newSVpv ((char*)unit->plural, PL_na);    break;
+		case 6: RETVAL = newSVpv ((char*)unit->abbr_plural, PL_na); break;
 
 		default: RETVAL = &PL_sv_undef;
 	}

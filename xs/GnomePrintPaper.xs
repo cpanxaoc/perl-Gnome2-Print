@@ -10,7 +10,7 @@ newSVGnomePrintPaper (GnomePrintPaper * p)
 
 	object = newHV ();
 	
-	hv_store (object, "name", 4, newSVGChar (p->name), 0);
+	hv_store (object, "name", 4, newSVpv ((char *) p->name, PL_na), 0);
 	hv_store (object, "width", 5, newSVnv (p->width), 0);
 	hv_store (object, "height", 6, newSVnv (p->height), 0);
 	hv_store (object, "version", 7, newSVuv (p->version), 0);

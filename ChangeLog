@@ -1,3 +1,12 @@
+2006-11-15  Emmanuele Bassi  <ebassi@gnome.org>
+
+	Patch by Torsten Schoenfeld for removing signedness warnings.
+
+	* xs/GnomePrintConfig.xs:
+	* xs/GnomePrintPaper.xs:
+	* xs/GnomePrintUnit.xs: Use gchar* instead of guchar* and
+	remove signedness warnings.
+
 2005/08/23 00:45 (-0400) muppetman
 
 	* README, Print.pm: update to version 0.951.
