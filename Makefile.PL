@@ -92,6 +92,20 @@ WriteMakefile(
     $gnomeprint2->get_makefile_vars,
 );
 
+print <<__EOW__;
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+
+  This module, like the libraries it binds, has been deprecated.
+  You should use GTK+ >= 2.10 and the Gtk2 bindings >= 1.140,
+  which provide a high level printing API.
+
+  For more information, see:
+
+  http://library.gnome.org/devel/gtk/stable/gtk-High-level-Printing-API.html
+
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+__EOW__
+
 sub MY::postamble
 {
 	return Glib::MakeHelper->postamble_clean ()

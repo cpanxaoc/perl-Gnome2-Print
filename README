@@ -13,7 +13,17 @@ join gtk-perl-list@gnome.org at lists.gnome.org.
 Also have a look at the gtk2-perl website and sourceforge project page,
 http://gtk2-perl.sourceforge.net
 
-FIXME we have no other documentation, but we probably need it.
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+
+This module, like the underlying libraries it binds, has been deprecated
+by the new high level printing API available since GTK+ 2.10 and wrapped
+by the Gtk2 Perl module since 1.140.
+
+For more information, see:
+
+http://library.gnome.org/devel/gtk/stable/gtk-High-level-Printing-API.html
+
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
 
 
 INSTALLATION
