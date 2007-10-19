@@ -43,7 +43,7 @@ use constant GNOME_FONT_HEAVIEST => 1100;
 
 =head1 NAME
 
-Gnome2::Print::Font::Constants - constants for use with Gnom2::Print::Font
+Gnome2::Print::Font::Constants - constants for use with Gnome2::Print::Font
 
 =head1 SYNOPSIS
 
