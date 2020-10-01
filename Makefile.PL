@@ -32,6 +32,8 @@ unless (eval "use ExtUtils::Depends;"
    warn "$@\n";
    WriteMakefile(
          PREREQ_FATAL => 1,
+         # don't clobber the existing META.yml
+         NO_META      => 1,
          PREREQ_PM    => {
             'Glib'                => $build_reqs{'perl-Glib'},
             'Gtk2'                => $build_reqs{'perl-Gtk2'},
@@ -89,6 +91,8 @@ WriteMakefile(
     ABSTRACT_FROM => 'Print.pm', # retrieve abstract from module
     XSPROTOARG    => '-noprototypes',
     MAN3PODS	  => \%pod_files,
+    # don't clobber the existing META.yml
+    NO_META      => 1,
     $gnomeprint2->get_makefile_vars,
 );
 
