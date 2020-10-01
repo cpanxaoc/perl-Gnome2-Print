@@ -12,3 +12,4 @@ configure_requires:
   Gtk2: '1.120'
 distribution_type: module
 generated_by: ExtUtils::MakeMaker version 6.17
+x_deprecated: 1
