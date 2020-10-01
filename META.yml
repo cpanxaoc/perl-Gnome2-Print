@@ -4,7 +4,11 @@ name:         Gnome2-Print
 version:      0.92
 version_from: Print.pm
 installdirs:  site
-requires:
-
+configure_requires:
+  ExtUtils::Depends: '0.2'
+  ExtUtils::MakeMaker: '0'
+  ExtUtils::PkgConfig: '1.03'
+  Glib: '1.120'
+  Gtk2: '1.120'
 distribution_type: module
 generated_by: ExtUtils::MakeMaker version 6.17
