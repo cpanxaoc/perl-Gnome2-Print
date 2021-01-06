@@ -44,7 +44,7 @@ XSLoader::load('Gnome2::Print', $VERSION);
 __END__
 =head1 NAME
 
-Gnome2::Print - Perl wrappers for the Gnome Print utilities.
+Gnome2::Print - (DEPRECATED) Perl wrappers for the Gnome Print utilities.
 
 =head1 SYNOPSIS
 
